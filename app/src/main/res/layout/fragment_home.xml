@@ -21,7 +21,7 @@
                 android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/NameNote"
+                    android:id="@+id/HomeNameNote"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_marginStart="8dp"
@@ -33,19 +33,19 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/topicNote"
+                    android:id="@+id/HometopicNote"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:hint="тема"
                     android:inputType="textPersonName"
-                    android:text="Name"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/NameNote" />
+                    app:layout_constraintTop_toBottomOf="@+id/HomeNameNote" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btShowNote"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="52dp"
@@ -67,7 +67,7 @@
                     android:inputType="textMultiLine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/topicNote" />
+                    app:layout_constraintTop_toBottomOf="@+id/HometopicNote" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
@@ -77,20 +77,15 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button4"
+            <ImageButton
+                android:id="@+id/btHomeNewNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:layout_marginLeft="200dp"
+                android:src="@android:drawable/ic_menu_edit" />
 
 
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
         </LinearLayout>
     </LinearLayout>
 </layout>
