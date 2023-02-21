@@ -21,7 +21,11 @@
         android:id="@+id/createNotesFragment"
         android:name="com.example.smnotes.CreateNotesFragment"
         android:label="fragment_create_notes"
-        tools:layout="@layout/fragment_create_notes" />
+        tools:layout="@layout/fragment_create_notes" >
+        <action
+            android:id="@+id/action_createNotesFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/showNotesFragment"
         android:name="com.example.smnotes.ShowNotesFragment"
