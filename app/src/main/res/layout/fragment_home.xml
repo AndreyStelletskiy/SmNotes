@@ -14,7 +14,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="667dp">
+            android:layout_height="697dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -49,16 +49,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="52dp"
-                    android:layout_marginEnd="52dp"
+                    android:layout_marginEnd="32dp"
                     android:text="Показать \n заметку"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <MultiAutoCompleteTextView
                     android:id="@+id/Nameallnote"
-                    android:layout_width="382dp"
+                    android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="12dp"
                     android:layout_marginTop="42dp"
                     android:layout_marginEnd="20dp"
                     android:ems="10"

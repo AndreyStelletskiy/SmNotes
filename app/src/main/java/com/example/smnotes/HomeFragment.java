@@ -3,10 +3,13 @@ package com.example.smnotes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,12 +56,43 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View Hview = inflater.inflate(R.layout.fragment_home, container, false);
+        ImageButton NewNote = Hview.findViewById(R.id.btHomeNewNote);
+        Button ShowNote = Hview.findViewById(R.id.btShowNote);
+
+        ShowNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShowNote();
+            }
+        });
+        NewNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewNote();
+            }
+
+        });
+
+        return Hview;
     }
+
+    private void ShowNote() {
+        Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_showNotesFragment);
+    }
+
+    private void NewNote() {
+        Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_createNotesFragment);
+
+    }
+
+
 }
