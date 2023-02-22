@@ -64,9 +64,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View Hview = inflater.inflate(R.layout.fragment_home, container, false);
-        ImageButton NewNote = Hview.findViewById(R.id.btHomeNewNote);
-        Button ShowNote = Hview.findViewById(R.id.btShowNote);
+        View Homeview = inflater.inflate(R.layout.fragment_home, container, false);
+        ImageButton NewNote = Homeview.findViewById(R.id.btHomeNewNote);
+        Button ShowNote = Homeview.findViewById(R.id.btShowNote);
 
         ShowNote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +82,7 @@ public class HomeFragment extends Fragment {
 
         });
 
-        return Hview;
+        return Homeview;
     }
 
     private void ShowNote() {

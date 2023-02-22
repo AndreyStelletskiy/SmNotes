@@ -3,10 +3,12 @@ package com.example.smnotes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +61,19 @@ public class ShowNotesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_show_notes, container, false);
+        View showView = inflater.inflate(R.layout.fragment_show_notes, container, false);
+        ImageButton go_toHome = showView.findViewById(R.id.btShow_toHome);
+        go_toHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backhome();
+            }
+        });
+
+        return showView;
+    }
+
+    private void backhome() {
+        Navigation.findNavController(requireView()).navigate(R.id.action_showNotesFragment_to_homeFragment2);
     }
 }
