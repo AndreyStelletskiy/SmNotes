@@ -7,113 +7,120 @@
     tools:context=".ShowNotesFragment">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="697dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Просмотр и изменение заметки"
-                    android:textColor="#FF6D00"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/ShowName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="26dp"
-                    android:ems="10"
-                    android:hint="Название"
-                    android:inputType="textPersonName"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <EditText
-                    android:id="@+id/ShowTopic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:ems="10"
-                    android:hint="Тема"
-                    android:inputType="textPersonName"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ShowName" />
-
-                <MultiAutoCompleteTextView
-                    android:id="@+id/ShowNote"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:hint="Заметка"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ShowTopic" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/btShow_toHome"
-                app:tint="#FF6D00"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="#00FFFFFF"
-                android:scaleType="fitXY"
-                android:src="?attr/actionModeCloseDrawable" />
 
-            <Button
-                android:id="@+id/btDell"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Удалить" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="697dp">
 
-            <ImageButton
-                android:id="@+id/btshowSave"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="#00FFFFFF"
-                android:scaleType="fitXY"
-                app:tint="#FF6D00"
-                android:src="@android:drawable/ic_menu_save" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/btNewNote"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
 
-                android:background="#00FF5722"
-                android:scaleType="fitXY"
-                android:src="@drawable/new_note"
-                app:tint="#FF6D00" />
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Просмотр и изменение заметки"
+                        android:textColor="#FF6D00"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/ShowName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="26dp"
+                        android:ems="10"
+                        android:hint="Название"
+                        android:inputType="textPersonName"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/ShowTopic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:ems="10"
+                        android:hint="Тема"
+                        android:inputType="textPersonName"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ShowName" />
+
+                    <MultiAutoCompleteTextView
+                        android:id="@+id/ShowNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint="Заметка"
+                        android:maxLines="22"
+                        android:minHeight="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ShowTopic" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btShow_toHome"
+                    app:tint="#FF6D00"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="?attr/actionModeCloseDrawable" />
+
+                <Button
+                    android:id="@+id/btDell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Удалить" />
+
+                <ImageButton
+                    android:id="@+id/btshowSave"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:background="#00FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/baseline_save_24"
+                    app:tint="#FF6D00" />
+
+                <ImageButton
+                    android:id="@+id/btNewNote"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+
+                    android:background="#00FF5722"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/baseline_note_add_24"
+                    app:tint="#FF6D00" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 </FrameLayout>

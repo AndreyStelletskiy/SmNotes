@@ -2,6 +2,8 @@ package com.example.smnotes;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -11,12 +13,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,19 +74,8 @@ public class HomeFragment extends Fragment {
         ImageButton NewNote = Homeview.findViewById(R.id.btHomeNewNote);
         Button ShowNote = Homeview.findViewById(R.id.btShowNote);
 
-        ShowNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowNote();
-            }
-        });
-        NewNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NewNote();
-            }
-
-        });
+        ShowNote.setOnClickListener(v -> ShowNote());
+        NewNote.setOnClickListener(v -> NewNote());
 
         return Homeview;
     }

@@ -63,6 +63,7 @@ public class ShowNotesFragment extends Fragment {
         // Inflate the layout for this fragment
         View showView = inflater.inflate(R.layout.fragment_show_notes, container, false);
         ImageButton go_toHome = showView.findViewById(R.id.btShow_toHome);
+        ImageButton newNote = showView.findViewById(R.id.btNewNote);
         go_toHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +71,18 @@ public class ShowNotesFragment extends Fragment {
             }
         });
 
+        newNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newnote();
+            }
+        });
+
         return showView;
+    }
+
+    private void newnote() {
+        Navigation.findNavController(requireView()).navigate(R.id.action_showNotesFragment_to_createNotesFragment);
     }
 
     private void backhome() {
