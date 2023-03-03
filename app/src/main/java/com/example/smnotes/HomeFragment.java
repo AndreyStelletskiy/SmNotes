@@ -71,11 +71,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View Homeview = inflater.inflate(R.layout.fragment_home, container, false);
-        ImageButton NewNote = Homeview.findViewById(R.id.btHomeNewNote);
-        Button ShowNote = Homeview.findViewById(R.id.btShowNote);
+        //ImageButton NewNote = Homeview.findViewById(R.id.btHomeNewNote);
+        //Button ShowNote = Homeview.findViewById(R.id.btShowNote);
 
-        ShowNote.setOnClickListener(v -> ShowNote());
-        NewNote.setOnClickListener(v -> NewNote());
+        //ShowNote.setOnClickListener(v -> ShowNote());
+        //NewNote.setOnClickListener(v -> NewNote());
 
         return Homeview;
     }

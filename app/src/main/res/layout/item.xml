@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textname"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_light"
+            android:text="Название"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/N_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
+            android:textColor="#000000"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Texttopic"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_light"
+            android:textColor="#000000"
+            android:text="Тема" />
+
+        <TextView
+            android:id="@+id/N_Topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textColor="#000000"
+            android:background="@android:color/holo_orange_light"
+            android:text="TextView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Textnote"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:background="@android:color/holo_orange_light"
+            android:layout_marginBottom = "8dp"
+            android:text="Заметка" />
+
+        <TextView
+            android:id="@+id/N_Note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:background="@android:color/holo_orange_light"
+            android:layout_marginBottom = "8dp"
+            android:text="TextView" />
+    </LinearLayout>
+</LinearLayout>
