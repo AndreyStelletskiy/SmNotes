@@ -3,19 +3,17 @@ package com.example.smnotes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ShowNotesFragment#newInstance} factory method to
+ * Use the {@link ChangeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShowNotesFragment extends Fragment {
+public class ChangeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +24,7 @@ public class ShowNotesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ShowNotesFragment() {
+    public ChangeFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +34,11 @@ public class ShowNotesFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ShowNotesFragment.
+     * @return A new instance of fragment ChangeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShowNotesFragment newInstance(String param1, String param2) {
-        ShowNotesFragment fragment = new ShowNotesFragment();
+    public static ChangeFragment newInstance(String param1, String param2) {
+        ChangeFragment fragment = new ChangeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,31 +59,6 @@ public class ShowNotesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View showView = inflater.inflate(R.layout.fragment_show_notes, container, false);
-        ImageButton go_toHome = showView.findViewById(R.id.btShow_toHome);
-        ImageButton newNote = showView.findViewById(R.id.btNewNote);
-        go_toHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backhome();
-            }
-        });
-
-        newNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newnote();
-            }
-        });
-
-        return showView;
-    }
-
-    private void newnote() {
-        Navigation.findNavController(requireView()).navigate(R.id.action_showNotesFragment_to_createNotesFragment);
-    }
-
-    private void backhome() {
-        Navigation.findNavController(requireView()).navigate(R.id.action_showNotesFragment_to_homeFragment2);
+        return inflater.inflate(R.layout.fragment_change, container, false);
     }
 }

@@ -13,7 +13,7 @@ class NotesViewHolder extends RecyclerView.ViewHolder {
 
     private NotesViewHolder(View itemView) {
         super(itemView);
-        wordItemView = itemView.findViewById(R.id.textView);
+        wordItemView = itemView.findViewById(R.id.N_Name);
     }
 
     public void bind(String text) {

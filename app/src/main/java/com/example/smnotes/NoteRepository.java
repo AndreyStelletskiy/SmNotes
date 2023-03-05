@@ -38,4 +38,9 @@ public class NoteRepository {
         // mWordDao.insert(word);
     }
 
+    void delet(Notes note) {
+        NoteRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mNoteDao.delete(note);
+        });}
+
 }

@@ -12,28 +12,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     private NoteViewModel mNotesViewModel;
+    private Home mHome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
         //getSupportActionBar().hide();
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final NotesListAdapter adapter = new NotesListAdapter(new NotesListAdapter.NotesDiff());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        mNotesViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
-        mNotesViewModel.getAllWords().observe(this, notes -> {
-            adapter.submitList(notes);
-        });
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new NoteADD().show(getSupportFragmentManager(), null);
-            }
-        });
     }
 }
