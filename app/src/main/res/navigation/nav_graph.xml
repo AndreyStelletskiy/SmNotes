@@ -11,31 +11,16 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_createFragment"
-            app:destination="@id/createFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_changeFragment"
-            app:destination="@id/changeFragment" />
+            android:id="@+id/action_homeFragment_to_create_NoteFragment"
+            app:destination="@id/create_NoteFragment" />
     </fragment>
     <fragment
-        android:id="@+id/createFragment"
-        android:name="com.example.smnotes.CreateFragment"
-        android:label="fragment_create"
-        tools:layout="@layout/fragment_create" >
+        android:id="@+id/create_NoteFragment"
+        android:name="com.example.smnotes.Create_NoteFragment"
+        android:label="fragment_create_note"
+        tools:layout="@layout/fragment_create_note" >
         <action
-            android:id="@+id/action_createFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/changeFragment"
-        android:name="com.example.smnotes.ChangeFragment"
-        android:label="fragment_change"
-        tools:layout="@layout/fragment_change" >
-        <action
-            android:id="@+id/action_changeFragment_to_createFragment2"
-            app:destination="@id/createFragment" />
-        <action
-            android:id="@+id/action_changeFragment_to_home2"
+            android:id="@+id/action_create_NoteFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

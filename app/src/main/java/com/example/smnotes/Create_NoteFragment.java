@@ -3,17 +3,20 @@ package com.example.smnotes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ChangeFragment#newInstance} factory method to
+ * Use the {@link Create_NoteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChangeFragment extends Fragment {
+public class Create_NoteFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +27,7 @@ public class ChangeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ChangeFragment() {
+    public Create_NoteFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +37,11 @@ public class ChangeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ChangeFragment.
+     * @return A new instance of fragment Create_NoteFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ChangeFragment newInstance(String param1, String param2) {
-        ChangeFragment fragment = new ChangeFragment();
+    public static Create_NoteFragment newInstance(String param1, String param2) {
+        Create_NoteFragment fragment = new Create_NoteFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -54,11 +57,22 @@ public class ChangeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    private NoteViewModel mNoteViewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_note, container, false);
+        Button btn = view.findViewById(R.id.ADDNote);
+        EditText name = view.findViewById(R.id.New_Name);
+        EditText topic = view.findViewById(R.id.New_Topic);
+        EditText nnote = view.findViewById(R.id.New_Note);
+        mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
+        btn.setOnClickListener(view1 -> {
+            Notes note = new Notes(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
+            mNoteViewModel.insert(note);
+        });
+        return view;
     }
 }

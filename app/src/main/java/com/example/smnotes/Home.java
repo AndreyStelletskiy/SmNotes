@@ -70,24 +70,23 @@ public class Home extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         final NotesListAdapter adapter = new NotesListAdapter(new NotesListAdapter.NotesDiff());
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mNotesViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
-        mNotesViewModel.getAllWords().observe(this, notes -> {
+        mNotesViewModel.getAllWords().observe(getViewLifecycleOwner(), notes -> {
             adapter.submitList(notes);
         });
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_createFragment);
+                //new NoteADD().show(getParentFragmentManager(), null);
+                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_create_NoteFragment);
+
             }
         });
 
 
-
         return view;
     }
-
-
 }

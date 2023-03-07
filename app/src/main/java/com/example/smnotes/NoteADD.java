@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import java.util.Objects;
 
@@ -21,8 +22,9 @@ public class NoteADD extends Fragment{
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_create,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_create_note,container,false);
         Button btn = view.findViewById(R.id.ADDNote);
         EditText name = view.findViewById(R.id.New_Name);
         EditText topic = view.findViewById(R.id.New_Topic);
@@ -33,5 +35,6 @@ public class NoteADD extends Fragment{
             mNoteViewModel.insert(note);
         });
         return view;
+
     }
 }
