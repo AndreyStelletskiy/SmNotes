@@ -3,6 +3,7 @@ package com.example.smnotes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesViewHolder> {
+
 
     static class NotesViewHolder extends RecyclerView.ViewHolder {
         private final TextView noteItemView;
@@ -23,12 +25,15 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
             nameItemView= itemView.findViewById(R.id.N_Name);
             topicItemView = itemView.findViewById(R.id.N_Topic);
             noteItemView = itemView.findViewById(R.id.N_Note);
+
+
         }
 
         public void bind(String name, String topic, String note) {
             noteItemView.setText(note);
             nameItemView.setText(name);
             topicItemView.setText(topic);
+            Notes nnote = new Notes(name, topic, note);
         }
 
         static NotesViewHolder create(ViewGroup parent) {
@@ -65,4 +70,5 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
             return oldItem.getNote().equals(newItem.getNote());
         }
     }
+
 }

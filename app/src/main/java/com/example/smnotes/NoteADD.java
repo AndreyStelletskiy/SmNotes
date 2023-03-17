@@ -33,7 +33,9 @@ public class NoteADD extends Fragment{
         btn.setOnClickListener(view1 -> {
             Notes note = new Notes(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
             mNoteViewModel.insert(note);
+            Navigation.findNavController(requireView()).navigate(R.id.action_create_NoteFragment_to_homeFragment);
         });
+        Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_create_NoteFragment);
         return view;
 
     }

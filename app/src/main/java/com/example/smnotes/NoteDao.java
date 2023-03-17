@@ -21,6 +21,7 @@ public interface NoteDao {
     @Query("DELETE FROM notes_table")
     void deleteAll();
 
+
     @Query("SELECT * FROM notes_table ORDER BY topic ASC")
     LiveData<List<Notes>> getAlphabetizedWords();
 
