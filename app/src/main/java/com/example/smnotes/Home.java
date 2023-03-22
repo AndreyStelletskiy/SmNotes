@@ -72,11 +72,13 @@ public class Home extends Fragment {
         final NotesListAdapter adapter = new NotesListAdapter(new NotesListAdapter.NotesDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Button btd = recyclerView.findViewById(R.id.buttonDELL);
 
         mNotesViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
-        mNotesViewModel.getAllWords().observe(getViewLifecycleOwner(), notes -> {
+        mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), notes -> {
             adapter.submitList(notes);
         });
+
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -91,4 +93,6 @@ public class Home extends Fragment {
 
         return view;
     }
+
+
 }

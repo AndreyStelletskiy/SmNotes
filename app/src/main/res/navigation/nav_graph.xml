@@ -20,7 +20,7 @@
         android:label="fragment_create_note"
         tools:layout="@layout/fragment_create_note" >
         <action
-            android:id="@+id/action_create_NoteFragment_to_homeFragment"
+            android:id="@+id/action_create_NoteFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

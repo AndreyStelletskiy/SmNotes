@@ -17,25 +17,29 @@ import androidx.navigation.Navigation;
 
 import java.util.Objects;
 
-public class NoteADD extends Fragment{
+public class NoteADD extends Fragment {
     private NoteViewModel mNoteViewModel;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_create_note,container,false);
+        View view = inflater.inflate(R.layout.fragment_create_note, container, false);
         Button btn = view.findViewById(R.id.ADDNote);
         EditText name = view.findViewById(R.id.New_Name);
         EditText topic = view.findViewById(R.id.New_Topic);
         EditText nnote = view.findViewById(R.id.New_Note);
         mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
-        btn.setOnClickListener(view1 -> {
-            Notes note = new Notes(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
-            mNoteViewModel.insert(note);
-            Navigation.findNavController(requireView()).navigate(R.id.action_create_NoteFragment_to_homeFragment);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Notes note = new Notes(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
+                mNoteViewModel.insert(note);
+                Navigation.findNavController(requireView()).navigate(R.id.action_create_NoteFragment_to_homeFragment2);
+
+            }
         });
-        Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_create_NoteFragment);
+
         return view;
 
     }
