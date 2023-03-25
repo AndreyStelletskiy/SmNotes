@@ -1,4 +1,4 @@
-package com.example.smnotes;
+package com.example.smnotes.noteadd;
 
 import android.app.Application;
 

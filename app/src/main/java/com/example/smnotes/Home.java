@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+import com.example.smnotes.noteadd.NoteViewModel;
+import com.example.smnotes.noteadd.NotesListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
@@ -72,7 +73,6 @@ public class Home extends Fragment {
         final NotesListAdapter adapter = new NotesListAdapter(new NotesListAdapter.NotesDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        Button btd = recyclerView.findViewById(R.id.buttonDELL);
 
         mNotesViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), notes -> {
@@ -85,7 +85,7 @@ public class Home extends Fragment {
             @Override
             public void onClick(View view) {
                 //new NoteADD().show(getParentFragmentManager(), null);
-                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_create_NoteFragment);
+                Navigation.findNavController(requireView()).navigate(R.id.action_homes_to_noteADD);
 
             }
         });

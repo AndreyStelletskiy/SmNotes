@@ -1,4 +1,4 @@
-package com.example.smnotes;
+package com.example.smnotes.noteadd;
 
 import android.app.Application;
 
@@ -18,7 +18,7 @@ public class NoteViewModel extends AndroidViewModel {
         mAllNotes = mRepository.getAllNotes();
     }
 
-    LiveData<List<Notes>> getAllNotes() { return mAllNotes; }
+    public LiveData<List<Notes>> getAllNotes() { return mAllNotes; }
 
     public void insert(Notes note) { mRepository.insert(note); }
     public void delete(Notes note) { mRepository.delet(note); }

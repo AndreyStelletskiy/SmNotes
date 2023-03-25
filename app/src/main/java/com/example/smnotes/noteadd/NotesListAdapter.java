@@ -1,15 +1,16 @@
-package com.example.smnotes;
+package com.example.smnotes.noteadd;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.smnotes.R;
 
 public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesViewHolder> {
 
@@ -58,7 +59,7 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
         holder.bind(current.getName(), current.getTopic(), current.getNote());
     }
 
-    static class NotesDiff extends DiffUtil.ItemCallback<Notes> {
+    public static class NotesDiff extends DiffUtil.ItemCallback<Notes> {
 
         @Override
         public boolean areItemsTheSame(@NonNull Notes oldItem, @NonNull Notes newItem) {

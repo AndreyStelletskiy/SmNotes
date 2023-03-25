@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homes">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/homes"
         android:name="com.example.smnotes.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_create_NoteFragment"
-            app:destination="@id/create_NoteFragment" />
+            android:id="@+id/action_homes_to_noteADD"
+            app:destination="@id/noteADD" />
     </fragment>
     <fragment
-        android:id="@+id/create_NoteFragment"
-        android:name="com.example.smnotes.Create_NoteFragment"
-        android:label="fragment_create_note"
-        tools:layout="@layout/fragment_create_note" >
+        android:id="@+id/noteADD"
+        android:name="com.example.smnotes.NoteADD"
+        android:label="NoteADD"
+        tools:layout="@layout/fragment_note_add">
         <action
-            android:id="@+id/action_create_NoteFragment_to_homeFragment2"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_noteADD_to_homes"
+            app:destination="@id/homes" />
     </fragment>
 </navigation>

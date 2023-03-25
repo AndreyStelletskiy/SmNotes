@@ -3,8 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FF9800"
-    android:backgroundTint="#FFC107"
+    android:background="#EDB259"
+    android:backgroundTint="#F4D474"
     android:orientation="vertical">
 
     <View
@@ -109,7 +109,7 @@
 
     </LinearLayout>
     <View
-        android:id="@+id/divider2"
+        android:id="@+id/divider11"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black" />

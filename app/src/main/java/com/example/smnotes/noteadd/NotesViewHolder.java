@@ -1,4 +1,4 @@
-package com.example.smnotes;
+package com.example.smnotes.noteadd;
 
 
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.smnotes.R;
 
 class NotesViewHolder extends RecyclerView.ViewHolder {
     private final TextView wordItemView;
