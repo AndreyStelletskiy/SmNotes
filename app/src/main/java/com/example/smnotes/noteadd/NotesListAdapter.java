@@ -24,7 +24,6 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
         private NoteDao mnoteDao;
         private final TextView noteItemView;
         private final TextView nameItemView;
-        private final Button dellItemView;
         private final Button changeItemView;
         private final TextView topicItemView;
 
@@ -33,16 +32,7 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
             nameItemView= itemView.findViewById(R.id.N_Name);
             topicItemView = itemView.findViewById(R.id.N_Topic);
             noteItemView = itemView.findViewById(R.id.N_Note);
-            dellItemView = itemView.findViewById(R.id.buttonDELL);
             changeItemView = itemView.findViewById(R.id.buttonChange);
-            dellItemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Заметка удалена", Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
             changeItemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -51,7 +41,7 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
                     String nname = nameItemView.getText().toString();
                     String ntopic = topicItemView.getText().toString();
                     String nnote = noteItemView.getText().toString();
-                    rr.putString("0", (nname + " "+ ntopic + " "+ nnote));
+                    rr.putString("0", (nname + "/ /"+ ntopic + "/ /"+ nnote));
                     Navigation.findNavController(v).navigate(R.id.action_homes_to_changeNoteFragment,rr);
                 }
             });

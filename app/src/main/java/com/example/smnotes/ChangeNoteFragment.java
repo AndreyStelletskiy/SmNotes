@@ -1,10 +1,11 @@
 package com.example.smnotes;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.smnotes.noteadd.NoteViewModel;
+import com.example.smnotes.noteadd.Notes;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,11 +65,14 @@ public class ChangeNoteFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         String result = getArguments().getString("0");
-        Note = result.split(" ");
+        Note = result.split("/ /");
+        Snote = new Notes(Note[0],Note[1],Note[2]);
 
 
 
     }
+    private NoteViewModel mNoteViewModel;
+    private Notes Snote;
 
 
 
@@ -77,16 +84,31 @@ public class ChangeNoteFragment extends Fragment {
         EditText topic = view.findViewById(R.id.Change_Topic);
         EditText note = view.findViewById(R.id.Change_Note);
         TextView show = view.findViewById(R.id.Show);
-        Button dell = view.findViewById(R.id.ChangeNote);
+        Button change = view.findViewById(R.id.ChangeNote);
+        Button dell = view.findViewById(R.id.ChDell);
         name.setText(Note[0]);
         topic.setText(Note[1]);
         note.setText(Note[2]);
         show.setText("Изменение заметки "+Note[0]);
+        mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
 
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), note.getText().toString());
+                Toast.makeText(getActivity(), "Заметка изменена", Toast.LENGTH_SHORT).show();
+                mNoteViewModel.deletefname(Note[0],Note[1]);
+                mNoteViewModel.insert(Nnote);
+                Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
+
+            }
+        });
         dell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //обновление заметки
+                mNoteViewModel.delete(Snote);
+                Toast.makeText(getActivity(), "Заметка удалена", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
             }
         });
         // Inflate the layout for this fragment
