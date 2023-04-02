@@ -127,6 +127,7 @@
             android:insetLeft="4dp"
             android:insetTop="4dp"
             android:insetRight="4dp"
+            android:onClick="delet"
             android:text="Изменить" />
 
         <Button

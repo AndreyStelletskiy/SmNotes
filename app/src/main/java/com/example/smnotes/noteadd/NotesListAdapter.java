@@ -1,11 +1,16 @@
 package com.example.smnotes.noteadd;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,9 +21,11 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
 
 
     static class NotesViewHolder extends RecyclerView.ViewHolder {
+        private NoteDao mnoteDao;
         private final TextView noteItemView;
         private final TextView nameItemView;
-
+        private final Button dellItemView;
+        private final Button changeItemView;
         private final TextView topicItemView;
 
         private NotesViewHolder(View itemView) {
@@ -26,6 +33,28 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
             nameItemView= itemView.findViewById(R.id.N_Name);
             topicItemView = itemView.findViewById(R.id.N_Topic);
             noteItemView = itemView.findViewById(R.id.N_Note);
+            dellItemView = itemView.findViewById(R.id.buttonDELL);
+            changeItemView = itemView.findViewById(R.id.buttonChange);
+            dellItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Заметка удалена", Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+            changeItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Заметка изменена", Toast.LENGTH_SHORT).show();
+                    Bundle rr = new Bundle();
+                    String nname = nameItemView.getText().toString();
+                    String ntopic = topicItemView.getText().toString();
+                    String nnote = noteItemView.getText().toString();
+                    rr.putString("0", (nname + " "+ ntopic + " "+ nnote));
+                    Navigation.findNavController(v).navigate(R.id.action_homes_to_changeNoteFragment,rr);
+                }
+            });
 
 
         }

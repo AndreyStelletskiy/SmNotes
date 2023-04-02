@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homes_to_noteADD"
             app:destination="@id/noteADD" />
+        <action
+            android:id="@+id/action_homes_to_changeNoteFragment"
+            app:destination="@id/changeNoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/noteADD"
@@ -21,6 +24,15 @@
         tools:layout="@layout/fragment_note_add">
         <action
             android:id="@+id/action_noteADD_to_homes"
+            app:destination="@id/homes" />
+    </fragment>
+    <fragment
+        android:id="@+id/changeNoteFragment"
+        android:name="com.example.smnotes.ChangeNoteFragment"
+        android:label="fragment_change_note"
+        tools:layout="@layout/fragment_change_note" >
+        <action
+            android:id="@+id/action_changeNoteFragment_to_homes"
             app:destination="@id/homes" />
     </fragment>
 </navigation>

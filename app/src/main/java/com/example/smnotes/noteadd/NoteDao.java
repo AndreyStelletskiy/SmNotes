@@ -11,13 +11,15 @@ import java.util.List;
 @Dao
 public interface NoteDao {
 
-    @Insert()
+    @Insert
     void insert(Notes note);
+
 
     @Delete
     void delete(Notes note);
 
-    @Query("DELETE FROM notes_table")
+
+    @Query("DELETE  FROM notes_table")
     void deleteAll();
 
 

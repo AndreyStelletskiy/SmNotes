@@ -43,4 +43,9 @@ public class NoteRepository {
             mNoteDao.delete(note);
         });}
 
+    void deletALL() {
+        NoteRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mNoteDao.deleteAll();
+        });}
+
 }
