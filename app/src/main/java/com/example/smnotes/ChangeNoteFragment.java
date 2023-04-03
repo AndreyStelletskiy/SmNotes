@@ -99,9 +99,9 @@ public class ChangeNoteFragment extends Fragment {
                 Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), note.getText().toString());
                 Toast.makeText(getActivity(), "Заметка изменена", Toast.LENGTH_SHORT).show();
                 mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
-                mNoteViewModel.insert(Nnote);
 
                 Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
+                mNoteViewModel.insert(Nnote);
 
             }
         });

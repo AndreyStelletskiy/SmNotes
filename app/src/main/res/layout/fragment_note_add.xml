@@ -21,12 +21,13 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="18dp"
                 android:ems="10"
                 android:hint="Название"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Show" />
 
@@ -48,9 +49,10 @@
                 android:id="@+id/Show"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="16dp"
                 android:text="Создание новой заметки"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +63,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="18dp"
-                android:layout_marginBottom="50dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="заметка"
@@ -69,17 +70,65 @@
                 android:maxLines="20"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/New_Topic" />
+                app:layout_constraintTop_toBottomOf="@+id/New_Topic"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <Button
-                android:id="@+id/ADDNote"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/ADDNOTE"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:saveEnabled="false"
+                android:src="@drawable/baseline_save_24"
+                app:backgroundTint="#FF8400"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/New_Note" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/back"
+                android:layout_width="53dp"
+                android:layout_height="56dp"
+                android:clickable="true"
+                android:saveEnabled="false"
+                android:src="?attr/actionModeCloseDrawable"
+                app:backgroundTint="#FF8400"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/noyes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:text="Добавить\n заметку"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:layout_marginTop="100dp"
+                android:text="Сохранить заметку"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="125dp"
+                android:text="Да"
+                app:layout_constraintBottom_toBottomOf="@+id/no"
+                app:layout_constraintEnd_toStartOf="@+id/no" />
+
+            <Button
+                android:id="@+id/no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="35dp"
+                android:text="Нет"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/New_Name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
