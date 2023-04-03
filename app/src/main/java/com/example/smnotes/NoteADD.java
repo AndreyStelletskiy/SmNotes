@@ -33,6 +33,8 @@ public class NoteADD extends Fragment {
         Button yes = view.findViewById(R.id.yes);
         Button no = view.findViewById(R.id.no);
         TextView ch = view.findViewById(R.id.noyes);
+
+
         yes.setVisibility(View.INVISIBLE);
         no.setVisibility(View.INVISIBLE);
         ch.setVisibility(View.INVISIBLE);
@@ -63,6 +65,11 @@ public class NoteADD extends Fragment {
                     yes.setVisibility(View.VISIBLE);
                     no.setVisibility(View.VISIBLE);
                     ch.setVisibility(View.VISIBLE);
+                    name.setVisibility(View.INVISIBLE);
+                    topic.setVisibility(View.INVISIBLE);
+                    nnote.setVisibility(View.INVISIBLE);
+                    view.findViewById(R.id.Show).setVisibility(View.INVISIBLE);
+                    btn.setVisibility(View.INVISIBLE);
 
                     yes.setOnClickListener(new View.OnClickListener() {
                         @Override

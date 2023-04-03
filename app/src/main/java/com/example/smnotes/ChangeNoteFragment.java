@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.smnotes.noteadd.NoteDao;
 import com.example.smnotes.noteadd.NoteViewModel;
 import com.example.smnotes.noteadd.Notes;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -115,6 +116,60 @@ public class ChangeNoteFragment extends Fragment {
                 Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
             }
         });
+
+        FloatingActionButton backch = view.findViewById(R.id.backch);
+        Button yesch = view.findViewById(R.id.yesch);
+        Button noch = view.findViewById(R.id.noch);
+        TextView noyesch = view.findViewById(R.id.noyesch);
+        yesch.setVisibility(View.INVISIBLE);
+        noch.setVisibility(View.INVISIBLE);
+        noyesch.setVisibility(View.INVISIBLE);
+
+        backch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if ((name.getText().toString().equals(Note[0]))==true && (topic.getText().toString().equals(Note[1]))==true && (note.getText().toString().equals(Note[2]))==true){
+                    Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);}
+                else{
+
+                    yesch.setVisibility(View.VISIBLE);
+                    noch.setVisibility(View.VISIBLE);
+                    noyesch.setVisibility(View.VISIBLE);
+                    name.setVisibility(View.INVISIBLE);
+                    topic.setVisibility(View.INVISIBLE);
+                    note.setVisibility(View.INVISIBLE);
+                    show.setVisibility(View.INVISIBLE);
+                    change.setVisibility(View.INVISIBLE);
+                    dell.setVisibility(View.INVISIBLE);
+
+                    yesch.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), note.getText().toString());
+                            Toast.makeText(getActivity(), "Заметка изменена", Toast.LENGTH_SHORT).show();
+                            mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
+
+                            Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
+                            mNoteViewModel.insert(Nnote);
+                        }
+                    });
+
+                    noch.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
+                        }
+                    });
+
+                }
+
+            }
+        });
+
+
+
         // Inflate the layout for this fragment
         return view;
     }
