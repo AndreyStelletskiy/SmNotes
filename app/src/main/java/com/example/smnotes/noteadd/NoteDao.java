@@ -25,8 +25,9 @@ public interface NoteDao {
     @Query("DELETE  FROM notes_table")
     void deleteAll();
 
-    @Query("DELETE FROM notes_table WHERE name == names AND topic == topics")
-    void deletefname(String names,String topics);
+    @Query("DELETE from notes_table WHERE name IN (:name) AND topic IN(:topic) AND note IN(:note)")
+    int deleteByname(String name, String topic, String note);
+
 
 
 

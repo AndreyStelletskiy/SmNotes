@@ -15,13 +15,13 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smnotes.ChangeNoteFragment;
 import com.example.smnotes.R;
 
 public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesViewHolder> {
 
 
     static class NotesViewHolder extends RecyclerView.ViewHolder {
-        private NoteDao mnoteDao;
         private final TextView noteItemView;
         private final TextView nameItemView;
         private final Button changeItemView;
@@ -36,17 +36,27 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
             changeItemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Заметка изменена", Toast.LENGTH_SHORT).show();
-                    Bundle rr = new Bundle();
-                    String nname = nameItemView.getText().toString();
-                    String ntopic = topicItemView.getText().toString();
-                    String nnote = noteItemView.getText().toString();
-                    rr.putString("0", (nname + "/ /"+ ntopic + "/ /"+ nnote));
-                    Navigation.findNavController(v).navigate(R.id.action_homes_to_changeNoteFragment,rr);
+                    getCh(v);
+                }
+            });
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getCh(v);
                 }
             });
 
 
+
+        }
+        public void getCh(View v){
+            Bundle rr = new Bundle();
+            String nname = nameItemView.getText().toString();
+            String ntopic = topicItemView.getText().toString();
+            String nnote = noteItemView.getText().toString();
+            rr.putString("0", (nname + "/ /"+ ntopic + "/ /"+ nnote));
+            Navigation.findNavController(v).navigate(R.id.action_homes_to_changeNoteFragment,rr);
         }
 
         public void bind(String name, String topic, String note) {

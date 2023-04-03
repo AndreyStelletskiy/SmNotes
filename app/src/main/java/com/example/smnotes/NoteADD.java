@@ -32,19 +32,7 @@ public class NoteADD extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Notes note = new Notes(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
-                if(name.getText().toString().length()!=0 && topic.getText().toString().length()!=0 &&nnote.getText().toString().length()!=0) {
-                    mNoteViewModel.insert(note);
-                    Toast.makeText(getActivity(), "Заметка добавлена", Toast.LENGTH_SHORT).show();
-
-                    Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
-                }
-                else{
-                    if(name.getText().toString().length()==0 && topic.getText().toString().length()!=0 &&nnote.getText().toString().length()!=0){Toast.makeText(getActivity(), "Введите имя", Toast.LENGTH_SHORT).show();}
-                    if(name.getText().toString().length()!=0 && topic.getText().toString().length()==0 &&nnote.getText().toString().length()!=0){Toast.makeText(getActivity(), "Введите тему", Toast.LENGTH_SHORT).show();}
-                    if(name.getText().toString().length()!=0 && topic.getText().toString().length()!=0 &&nnote.getText().toString().length()==0){Toast.makeText(getActivity(), "Введите заметку", Toast.LENGTH_SHORT).show();}
-                    else {Toast.makeText(getActivity(), "Заполните все поля", Toast.LENGTH_SHORT).show();}
-                }
+               NotesADD(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
 
 
             }
@@ -55,5 +43,23 @@ public class NoteADD extends Fragment {
 
     }
 
-    
+
+    public void NotesADD(String name, String topic, String nnote){
+        Notes note = new Notes(name, topic, nnote);
+        if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
+            mNoteViewModel.insert(note);
+            Toast.makeText(getActivity(), "Заметка добавлена", Toast.LENGTH_SHORT).show();
+
+            Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
+        }
+        else{
+            if(name.length()==0 && topic.length()!=0 &&nnote.length()!=0){Toast.makeText(getActivity(), "Введите имя", Toast.LENGTH_SHORT).show();}
+            if(name.length()!=0 && topic.length()==0 &&nnote.length()!=0){Toast.makeText(getActivity(), "Введите тему", Toast.LENGTH_SHORT).show();}
+            if(name.length()!=0 && topic.length()!=0 &&nnote.length()==0){Toast.makeText(getActivity(), "Введите заметку", Toast.LENGTH_SHORT).show();}
+            else {Toast.makeText(getActivity(), "Заполните все поля", Toast.LENGTH_SHORT).show();}
+        }
+
+
+    }
+
 }
