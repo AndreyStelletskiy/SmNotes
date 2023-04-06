@@ -1,6 +1,8 @@
 package com.example.smnotes.noteadd;
 
 import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 
@@ -10,12 +12,16 @@ public class NoteRepository {
 
     private NoteDao mNoteDao;
     private LiveData<List<Notes>> mAllNotes;
+    private LiveData<List<Notes>> mNotes;
+    private LiveData<List<String>> mtopic;
 
     NoteRepository(Application application) {
         NoteRoomDatabase db = NoteRoomDatabase.getDatabase(application);
         mNoteDao = db.noteDao();
         mAllNotes = mNoteDao.getAlphabetizedWords();
+
     }
+
 
     // Room executes all queries on a separate thread.
     // Observed LiveData will notify the observer when the data has changed.
@@ -52,6 +58,19 @@ public class NoteRepository {
         NoteRoomDatabase.databaseWriteExecutor.execute(() -> {
             mNoteDao.deleteByname(name, topic, note);
         });}
+
+    LiveData<List<String>> getALLtopic() {
+        mtopic = mNoteDao.getALLtopic();
+        return mtopic;
+    }
+
+
+
+    LiveData<List<Notes>> getNote(String topic) {
+        mNotes = mNoteDao.getNote(topic);
+        return mNotes;
+    }
+
 
 
 }

@@ -88,6 +88,7 @@ public class ChangeNoteFragment extends Fragment {
         TextView show = view.findViewById(R.id.Show);
         Button change = view.findViewById(R.id.ChangeNote);
         Button dell = view.findViewById(R.id.ChDell);
+        TextView noyeschdell = view.findViewById(R.id.noyeschdell);
         name.setText(Note[0]);
         topic.setText(Note[1]);
         note.setText(Note[2]);
@@ -142,17 +143,15 @@ public class ChangeNoteFragment extends Fragment {
                     }
                 });
 
-
-
-
-
             }
         });
+
 
         FloatingActionButton backch = view.findViewById(R.id.backch);
         Button yesch = view.findViewById(R.id.yesch);
         Button noch = view.findViewById(R.id.noch);
         TextView noyesch = view.findViewById(R.id.noyesch);
+        noyeschdell.setVisibility(View.INVISIBLE);
         yesch.setVisibility(View.INVISIBLE);
         noch.setVisibility(View.INVISIBLE);
         noyesch.setVisibility(View.INVISIBLE);

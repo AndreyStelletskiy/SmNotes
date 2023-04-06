@@ -4,10 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
@@ -15,7 +12,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smnotes.ChangeNoteFragment;
 import com.example.smnotes.R;
 
 public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesViewHolder> {
@@ -24,7 +20,7 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
     static class NotesViewHolder extends RecyclerView.ViewHolder {
         private final TextView noteItemView;
         private final TextView nameItemView;
-        private final Button changeItemView;
+
         private final TextView topicItemView;
 
         private NotesViewHolder(View itemView) {
@@ -32,13 +28,7 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
             nameItemView= itemView.findViewById(R.id.N_Name);
             topicItemView = itemView.findViewById(R.id.N_Topic);
             noteItemView = itemView.findViewById(R.id.N_Note);
-            changeItemView = itemView.findViewById(R.id.buttonChange);
-            changeItemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    getCh(v);
-                }
-            });
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -14,8 +14,6 @@ public interface NoteDao {
 
     @Insert
     void insert(Notes note);
-    @Update
-    void update(Notes note);
 
 
     @Delete
@@ -28,7 +26,11 @@ public interface NoteDao {
     @Query("DELETE from notes_table WHERE name IN (:name) AND topic IN(:topic) AND note IN(:note)")
     int deleteByname(String name, String topic, String note);
 
+    @Query("SELECT * FROM notes_table WHERE topic IN (:topic)")
+    LiveData<List<Notes>> getNote(String topic);
 
+    @Query("SELECT topic FROM notes_table ORDER BY topic ASC")
+    LiveData<List<String>> getALLtopic();
 
 
     @Query("SELECT * FROM notes_table ORDER BY topic ASC")
