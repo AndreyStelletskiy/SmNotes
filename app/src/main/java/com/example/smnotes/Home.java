@@ -100,14 +100,17 @@ public class Home extends Fragment {
 
 
 
-            //dhtvtyyj
+
         TextView show = view.findViewById(R.id.shownote);
+
 
         mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
             Set<String> set=new LinkedHashSet<>(topic);
             show.setText(set.toString());
-            //
-            //
+            // set[1,дз, дороботки]
+            //надо сделать чтобы на 1 на дз на доработки можно нажать по отдельности.
+            //сколько их - длина масива
+
 
 
 
@@ -119,8 +122,8 @@ public class Home extends Fragment {
             public void onClick(View v) {
 
                 //notees = mNotesViewModel.getNote("дз");
-                mNotesViewModel.getNote("дз").observe(getViewLifecycleOwner(), notes -> {
-                    adapter.submitList(notes);
+                mNotesViewModel.getNote("дз").observe(getViewLifecycleOwner(), topic -> {
+                    adapter.submitList(topic);
                 });
 
 
