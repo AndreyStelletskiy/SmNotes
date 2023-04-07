@@ -106,6 +106,8 @@ public class Home extends Fragment {
         mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
             Set<String> set=new LinkedHashSet<>(topic);
             show.setText(set.toString());
+            //
+            //
 
 
 
