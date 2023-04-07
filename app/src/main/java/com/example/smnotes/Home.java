@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -88,6 +89,7 @@ public class Home extends Fragment {
         final NotesListAdapter adapter = new NotesListAdapter(new NotesListAdapter.NotesDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
 
 
         mNotesViewModel = new ViewModelProvider(this).get(NoteViewModel.class);

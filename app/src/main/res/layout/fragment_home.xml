@@ -62,6 +62,16 @@
             app:layout_constraintStart_toEndOf="@+id/all"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewtopic"
+            android:layout_width="265dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintStart_toEndOf="@+id/shownote"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -1,6 +1,5 @@
 package com.example.smnotes;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +14,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.smnotes.noteadd.NoteDao;
 import com.example.smnotes.noteadd.NoteViewModel;
 import com.example.smnotes.noteadd.Notes;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
