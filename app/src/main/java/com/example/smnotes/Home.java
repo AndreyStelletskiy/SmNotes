@@ -24,6 +24,7 @@ import com.example.smnotes.noteadd.Notes;
 import com.example.smnotes.noteadd.NotesListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -101,27 +102,31 @@ public class Home extends Fragment {
 
 
 
+
+
+
+
         TextView show = view.findViewById(R.id.shownote);
-
-
         mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
             Set<String> set=new LinkedHashSet<>(topic);
-            show.setText(set.toString());
-            // set[1,дз, дороботки]
+            List<String> topicnames = new ArrayList<>(set);
+            show.setText(topicnames.toString());
+        });
+
+                //adaptertopic.submitList(topic);
+                //Set<Topics> set=new LinkedHashSet<>(topic);
+                //List<Topics> topicnames = new ArrayList<>(set);
+                //show.setText(topicnames.toString());
+            // set[1,дз, дороботки, мама]
             //надо сделать чтобы на 1 на дз на доработки можно нажать по отдельности.
             //сколько их - длина масива
 
 
 
 
-
-        });
-
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //notees = mNotesViewModel.getNote("дз");
                 mNotesViewModel.getNote("дз").observe(getViewLifecycleOwner(), topic -> {
                     adapter.submitList(topic);
                 });
