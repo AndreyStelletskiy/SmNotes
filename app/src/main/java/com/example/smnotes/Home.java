@@ -1,14 +1,18 @@
 package com.example.smnotes;
 
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.opengl.Visibility;
 import android.os.Bundle;
+import android.view.ViewGroup.LayoutParams;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import androidx.recyclerview.widget.GridLayoutManager;
+import android.widget.LinearLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +86,7 @@ public class Home extends Fragment {
 
 
     private LiveData<List<Notes>> notees;
+    LinearLayout mainLayer;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -106,34 +112,35 @@ public class Home extends Fragment {
 
 
 
-        TextView show = view.findViewById(R.id.shownote);
         mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
             Set<String> set=new LinkedHashSet<>(topic);
             List<String> topicnames = new ArrayList<>(set);
-            show.setText(topicnames.toString());
-        });
+            LinearLayout layout = (LinearLayout) view.findViewById(R.id.ltop);
+            Button[] btn = new Button[topicnames.size()];
+            for (int i = 0; i < topicnames.size(); ++i) {
+                btn[i] = new Button(getContext());
+                btn[i].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                btn[i].setText("" + topicnames.get(i));
+                int id = View.generateViewId();
+                btn[i].setId(id);
+                layout.addView(btn[i]);
 
-                //adaptertopic.submitList(topic);
-                //Set<Topics> set=new LinkedHashSet<>(topic);
-                //List<Topics> topicnames = new ArrayList<>(set);
-                //show.setText(topicnames.toString());
-            // set[1,дз, дороботки, мама]
-            //надо сделать чтобы на 1 на дз на доработки можно нажать по отдельности.
-            //сколько их - длина масива
-
-
-
-
-        show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mNotesViewModel.getNote("дз").observe(getViewLifecycleOwner(), topic -> {
-                    adapter.submitList(topic);
+                btn[i].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                btn[i].setTextColor(Color.WHITE);
+                int finalI = i;
+                btn[i].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mNotesViewModel.getNote(topicnames.get(finalI)).observe(getViewLifecycleOwner(), topic -> {
+                            adapter.submitList(topic);
+                            Toast.makeText(getActivity(), "Заметки с темой: "+ topicnames.get(finalI), Toast.LENGTH_SHORT).show();
+                        });
+                    }
                 });
 
-
-                Toast.makeText(getActivity(), "Заметка 2", Toast.LENGTH_SHORT).show();
+                // слой, к которому кнопку хотите прикрепить
             }
+
         });
 
 
