@@ -8,10 +8,10 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/smn"
         android:label="SmNotes"
-        android:roundIcon="@drawable/smnote"
+        android:roundIcon="@drawable/smn"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmNotes"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <activity
             android:name=".MainActivity"
             android:exported="true">

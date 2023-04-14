@@ -20,8 +20,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smnotes.noteadd.NoteViewModel;
@@ -51,6 +49,7 @@ public class Home extends Fragment {
     private String mParam1;
     private String mParam2;
     private int c;
+    private  int colb;
 
     public Home() {
         // Required empty public constructor
@@ -116,42 +115,66 @@ public class Home extends Fragment {
             Set<String> set=new LinkedHashSet<>(topic);
             List<String> topicnames = new ArrayList<>(set);
             LinearLayout layout = (LinearLayout) view.findViewById(R.id.ltop);
-            Button[] btn = new Button[topicnames.size()];
-            for (int i = 0; i < topicnames.size(); ++i) {
+
+
+            Button[] btn = new Button[(topicnames.size()+1)];
+            int im = topicnames.size()+1;
+            System.out.println(im);
+            btn[0] = new Button(getContext());
+            btn[0].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            btn[0].setText("Все");
+            int id = View.generateViewId();
+            btn[0].setId(id);
+            layout.addView(btn[0]);
+
+            btn[0].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+            btn[0].setTextColor(Color.WHITE);
+            btn[0].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), topic -> {
+                        adapter.submitList(topic);
+                        Toast.makeText(getActivity(), "все заметки", Toast.LENGTH_SHORT).show();
+                        btn[colb].setClickable(true);
+                        btn[0].setClickable(false);
+                        btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                        btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                        colb=0;
+                    });
+                }
+            });
+            for (int i = 0; i < topicnames.size(); i++) {
+                i++;
                 btn[i] = new Button(getContext());
                 btn[i].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                btn[i].setText("" + topicnames.get(i));
-                int id = View.generateViewId();
+                btn[i].setText("" + topicnames.get(i-1));
+                id = View.generateViewId();
                 btn[i].setId(id);
                 layout.addView(btn[i]);
 
                 btn[i].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
                 btn[i].setTextColor(Color.WHITE);
-                int finalI = i;
+                int finalI = i-1;
                 btn[i].setOnClickListener(new View.OnClickListener() {
+
                     @Override
                     public void onClick(View v) {
                         mNotesViewModel.getNote(topicnames.get(finalI)).observe(getViewLifecycleOwner(), topic -> {
                             adapter.submitList(topic);
                             Toast.makeText(getActivity(), "Заметки с темой: "+ topicnames.get(finalI), Toast.LENGTH_SHORT).show();
+                            btn[colb].setClickable(true);
+                            btn[finalI+1].setClickable(false);
+                            btn[finalI+1].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                            btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                            colb=finalI+1;
                         });
                     }
                 });
+                i--;
 
                 // слой, к которому кнопку хотите прикрепить
             }
 
-        });
-
-
-        Button allshow = view.findViewById(R.id.all);
-        allshow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                notees = mNotesViewModel.getAllNotes();
-                adapter.submitList(notees.getValue());
-                Toast.makeText(getActivity(), "Все заметки", Toast.LENGTH_SHORT).show();
-            }
         });
 
 
