@@ -50,9 +50,7 @@ public abstract class NoteRoomDatabase extends RoomDatabase {
                 NoteDao dao = INSTANCE.noteDao();
                 dao.deleteAll();
 
-                Notes notes = new Notes("Hello", "test", "Hello");
-                dao.insert(notes);
-                notes = new Notes("World", "test", "World");
+                Notes notes = new Notes("Добро пожаловать", "Приветствие", "Приятного использования. \nПо вопросам пишите на почту: a.stelletskiy@ya.ru\nderected Andrey Stelletskiy");
                 dao.insert(notes);
             });
         }

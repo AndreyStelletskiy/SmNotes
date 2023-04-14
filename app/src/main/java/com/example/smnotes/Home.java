@@ -125,9 +125,8 @@ public class Home extends Fragment {
             btn[0].setText("Все");
             int id = View.generateViewId();
             btn[0].setId(id);
+            layout.removeAllViews();
             layout.addView(btn[0]);
-
-            btn[0].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
             btn[0].setTextColor(Color.WHITE);
             btn[0].setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -143,6 +142,8 @@ public class Home extends Fragment {
                     });
                 }
             });
+            btn[0].setClickable(false);
+            btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
             for (int i = 0; i < topicnames.size(); i++) {
                 i++;
                 btn[i] = new Button(getContext());
