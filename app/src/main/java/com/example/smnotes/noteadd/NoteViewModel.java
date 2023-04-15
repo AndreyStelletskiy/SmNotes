@@ -13,12 +13,13 @@ public class NoteViewModel extends AndroidViewModel {
     private final LiveData<List<Notes>> mAllNotes;
     private  LiveData<List<Notes>> mNotes;
     private  LiveData<List<String>> mtopic;
+    private  LiveData<List<String>> mname;
 
     public NoteViewModel (Application application) {
         super(application);
         mRepository = new NoteRepository(application);
         mAllNotes = mRepository.getAllNotes();
-        mNotes = mRepository.getNote("дз");
+        mNotes = mRepository.getNotet("дз");
     }
 
 
@@ -32,9 +33,15 @@ public class NoteViewModel extends AndroidViewModel {
     public LiveData<List<String>> getALLtopic(){mtopic = mRepository.getALLtopic();
     return mtopic;}
 
-    public LiveData<List<Notes>> getNote(String topic) {
-        mNotes = mRepository.getNote(topic);
+    public LiveData<List<String>> getALLnames(){mname = mRepository.getALLnames();
+        return mname;}
+
+    public LiveData<List<Notes>> getNotet(String topic) {
+        mNotes = mRepository.getNotet(topic);
         return mNotes; }
 
+    public LiveData<List<Notes>> getNoten(String name) {
+        mNotes = mRepository.getNoten(name);
+        return mNotes; }
 
 }

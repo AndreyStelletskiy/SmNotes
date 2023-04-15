@@ -3,16 +3,22 @@ package com.example.smnotes;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.GradientDrawable;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.widget.LinearLayout;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.smnotes.noteadd.NoteViewModel;
@@ -49,7 +56,9 @@ public class Home extends Fragment {
     private String mParam1;
     private String mParam2;
     private int c;
+    private int infob;
     private  int colb;
+    int sortedby=1;
 
     public Home() {
         // Required empty public constructor
@@ -95,6 +104,208 @@ public class Home extends Fragment {
         final NotesListAdapter adapter = new NotesListAdapter(new NotesListAdapter.NotesDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        Button sorted = view.findViewById(R.id.sortedby);
+        sorted.setText("Теме");
+        sorted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sortedby==0){
+                    sortedby=1;
+                    sorted.setText("Теме");
+                    mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
+                        Set<String> set = new LinkedHashSet<>(topic);
+                        List<String> topicnames = new ArrayList<>(set);
+                        LinearLayout layout = (LinearLayout) view.findViewById(R.id.ltop);
+
+
+                        Button[] btn = new Button[(topicnames.size() + 2)];
+                        int im = topicnames.size() + 1;
+                        System.out.println(im);
+                        btn[0] = new Button(getContext());
+                        btn[0].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                        btn[0].setText("Все");
+                        int id = View.generateViewId();
+                        btn[0].setId(id);
+                        layout.removeAllViews();
+                        layout.addView(btn[0]);
+                        btn[0].setTextColor(Color.WHITE);
+                        btn[0].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), topic -> {
+                                    adapter.submitList(topic);
+                                    Toast.makeText(getActivity(), "все заметки", Toast.LENGTH_SHORT).show();
+                                    btn[colb].setClickable(true);
+                                    btn[0].setClickable(false);
+                                    btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                                    btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                                    colb = 0;
+                                });
+                            }
+                        });
+
+                        btn[im] = new Button(getContext());
+                        btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                        btn[im].setText("i");
+                        id = View.generateViewId();
+                        btn[im].setId(id);
+                        btn[im].setBackgroundColor(Color.WHITE);
+
+                        View devider = new View(getContext());
+                        int dividerHeight = (int) (getResources().getDisplayMetrics().density * 5); // 1dp to pixels
+                        devider.setLayoutParams(new LayoutParams(dividerHeight, LayoutParams.MATCH_PARENT));
+                        devider.setBackgroundColor(Color.parseColor("#FE6D00"));
+
+                        btn[im].setTextColor(Color.BLUE);
+                        btn[im].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Navigation.findNavController(requireView()).navigate(R.id.action_homes_to_infoFragment);
+                            }
+                        });
+
+                        btn[0].setClickable(false);
+                        btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                        for (int i = 0; i < topicnames.size(); i++) {
+                            i++;
+                            btn[i] = new Button(getContext());
+                            btn[i].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                            btn[i].setText("" + topicnames.get(i - 1));
+                            id = View.generateViewId();
+                            btn[i].setId(id);
+                            layout.addView(btn[i]);
+
+                            btn[i].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                            btn[i].setTextColor(Color.WHITE);
+                            int finalI = i - 1;
+                            btn[i].setOnClickListener(new View.OnClickListener() {
+
+                                @Override
+                                public void onClick(View v) {
+
+                                        mNotesViewModel.getNotet(topicnames.get(finalI)).observe(getViewLifecycleOwner(), topic -> {
+                                            adapter.submitList(topic);
+                                            Toast.makeText(getActivity(), "Заметки с темой: " + topicnames.get(finalI), Toast.LENGTH_SHORT).show();
+                                            btn[colb].setClickable(true);
+                                            btn[finalI + 1].setClickable(false);
+                                            btn[finalI + 1].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                                            btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                                            colb = finalI + 1;
+                                        });
+
+                                }
+                            });
+                            i--;
+
+                            // слой, к которому кнопку хотите прикрепить
+                        }
+                        layout.addView(devider);
+
+                        layout.addView(btn[im]);
+                    });
+                }
+                else {sortedby=0;
+                    sorted.setText("Названию");
+                    mNotesViewModel.getALLnames().observe(getViewLifecycleOwner(), names -> {
+                        Set<String> set=new LinkedHashSet<>(names);
+                        List<String> topicnames = new ArrayList<>(set);
+                        LinearLayout layout = (LinearLayout) view.findViewById(R.id.ltop);
+
+
+                        Button[] btn = new Button[(topicnames.size()+2)];
+                        int im = topicnames.size()+1;
+                        System.out.println(im);
+                        btn[0] = new Button(getContext());
+                        btn[0].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                        btn[0].setText("Все");
+                        int id = View.generateViewId();
+                        btn[0].setId(id);
+                        layout.removeAllViews();
+                        layout.addView(btn[0]);
+                        btn[0].setTextColor(Color.WHITE);
+                        btn[0].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), topic -> {
+                                    adapter.submitList(topic);
+                                    Toast.makeText(getActivity(), "все заметки", Toast.LENGTH_SHORT).show();
+                                    btn[colb].setClickable(true);
+                                    btn[0].setClickable(false);
+                                    btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                                    btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                                    colb=0;
+                                });
+                            }
+                        });
+
+                        btn[im] = new Button(getContext());
+                        btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                        btn[im].setText("i");
+                        id = View.generateViewId();
+                        btn[im].setId(id);
+                        btn[im].setBackgroundColor(Color.WHITE);
+
+                        View devider = new View(getContext());
+                        int dividerHeight = (int) (getResources().getDisplayMetrics().density * 5); // 1dp to pixels
+                        devider.setLayoutParams(new LayoutParams(dividerHeight, LayoutParams.MATCH_PARENT));
+                        devider.setBackgroundColor(Color.parseColor("#FE6D00"));
+
+                        btn[im].setTextColor(Color.BLUE);
+                        btn[im].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Navigation.findNavController(requireView()).navigate(R.id.action_homes_to_infoFragment);
+                            }
+                        });
+
+                        btn[0].setClickable(false);
+                        btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                        for (int i = 0; i < topicnames.size(); i++) {
+                            i++;
+                            btn[i] = new Button(getContext());
+                            btn[i].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                            btn[i].setText("" + topicnames.get(i-1));
+                            id = View.generateViewId();
+                            btn[i].setId(id);
+                            layout.addView(btn[i]);
+
+                            btn[i].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                            btn[i].setTextColor(Color.WHITE);
+                            int finalI = i-1;
+                            btn[i].setOnClickListener(new View.OnClickListener() {
+
+                                @Override
+                                public void onClick(View v) {
+                                        mNotesViewModel.getNoten(topicnames.get(finalI)).observe(getViewLifecycleOwner(), topic -> {
+                                            adapter.submitList(topic);
+                                            Toast.makeText(getActivity(), "Заметки с названием: " + topicnames.get(finalI), Toast.LENGTH_SHORT).show();
+                                            btn[colb].setClickable(true);
+                                            btn[finalI + 1].setClickable(false);
+                                            btn[finalI + 1].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                                            btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
+                                            colb = finalI + 1;
+                                        });
+                                }
+                            });
+                            i--;
+
+                            // слой, к которому кнопку хотите прикрепить
+                        }
+                        layout.addView(devider);
+
+                        layout.addView(btn[im]);
+
+
+                    });}
+
+                if (c == 0) {
+                    mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), notes -> {
+                        adapter.submitList(notes);
+                    });}
+                colb=0;
+                view.invalidate();
+            }
+        });
 
 
 
@@ -111,14 +322,25 @@ public class Home extends Fragment {
 
 
 
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //new NoteADD().show(getParentFragmentManager(), null);
+                Navigation.findNavController(requireView()).navigate(R.id.action_homes_to_noteADD);
+
+            }
+        });
+
+        sorted.setText("Теме");
         mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
-            Set<String> set=new LinkedHashSet<>(topic);
+            Set<String> set = new LinkedHashSet<>(topic);
             List<String> topicnames = new ArrayList<>(set);
             LinearLayout layout = (LinearLayout) view.findViewById(R.id.ltop);
 
 
-            Button[] btn = new Button[(topicnames.size()+1)];
-            int im = topicnames.size()+1;
+            Button[] btn = new Button[(topicnames.size() + 2)];
+            int im = topicnames.size() + 1;
             System.out.println(im);
             btn[0] = new Button(getContext());
             btn[0].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
@@ -138,55 +360,69 @@ public class Home extends Fragment {
                         btn[0].setClickable(false);
                         btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
                         btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
-                        colb=0;
+                        colb = 0;
                     });
                 }
             });
+
+            btn[im] = new Button(getContext());
+            btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+            btn[im].setText("i");
+            id = View.generateViewId();
+            btn[im].setId(id);
+            btn[im].setBackgroundColor(Color.WHITE);
+
+            View devider = new View(getContext());
+            int dividerHeight = (int) (getResources().getDisplayMetrics().density * 5); // 1dp to pixels
+            devider.setLayoutParams(new LayoutParams(dividerHeight, LayoutParams.MATCH_PARENT));
+            devider.setBackgroundColor(Color.parseColor("#FE6D00"));
+
+            btn[im].setTextColor(Color.BLUE);
+            btn[im].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(requireView()).navigate(R.id.action_homes_to_infoFragment);
+                }
+            });
+
             btn[0].setClickable(false);
             btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
             for (int i = 0; i < topicnames.size(); i++) {
                 i++;
                 btn[i] = new Button(getContext());
                 btn[i].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                btn[i].setText("" + topicnames.get(i-1));
+                btn[i].setText("" + topicnames.get(i - 1));
                 id = View.generateViewId();
                 btn[i].setId(id);
                 layout.addView(btn[i]);
 
                 btn[i].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
                 btn[i].setTextColor(Color.WHITE);
-                int finalI = i-1;
+                int finalI = i - 1;
                 btn[i].setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
-                        mNotesViewModel.getNote(topicnames.get(finalI)).observe(getViewLifecycleOwner(), topic -> {
+
+                        mNotesViewModel.getNotet(topicnames.get(finalI)).observe(getViewLifecycleOwner(), topic -> {
                             adapter.submitList(topic);
-                            Toast.makeText(getActivity(), "Заметки с темой: "+ topicnames.get(finalI), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Заметки с темой: " + topicnames.get(finalI), Toast.LENGTH_SHORT).show();
                             btn[colb].setClickable(true);
-                            btn[finalI+1].setClickable(false);
-                            btn[finalI+1].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
+                            btn[finalI + 1].setClickable(false);
+                            btn[finalI + 1].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
                             btn[colb].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
-                            colb=finalI+1;
+                            colb = finalI + 1;
                         });
+
                     }
                 });
                 i--;
 
                 // слой, к которому кнопку хотите прикрепить
             }
+            layout.addView(devider);
 
-        });
-
-
-        FloatingActionButton fab = view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //new NoteADD().show(getParentFragmentManager(), null);
-                Navigation.findNavController(requireView()).navigate(R.id.action_homes_to_noteADD);
-
-            }
+            layout.addView(btn[im]);
         });
 
 

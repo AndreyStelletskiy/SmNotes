@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homes_to_changeNoteFragment"
             app:destination="@id/changeNoteFragment" />
+        <action
+            android:id="@+id/action_homes_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/noteADD"
@@ -33,6 +36,15 @@
         tools:layout="@layout/fragment_change_note" >
         <action
             android:id="@+id/action_changeNoteFragment_to_homes"
+            app:destination="@id/homes" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.smnotes.infoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_homes"
             app:destination="@id/homes" />
     </fragment>
 </navigation>

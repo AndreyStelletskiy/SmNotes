@@ -14,6 +14,7 @@ public class NoteRepository {
     private LiveData<List<Notes>> mAllNotes;
     private LiveData<List<Notes>> mNotes;
     private LiveData<List<String>> mtopic;
+    private LiveData<List<String>> mname;
 
     NoteRepository(Application application) {
         NoteRoomDatabase db = NoteRoomDatabase.getDatabase(application);
@@ -63,11 +64,19 @@ public class NoteRepository {
         mtopic = mNoteDao.getALLtopic();
         return mtopic;
     }
+    LiveData<List<String>> getALLnames() {
+        mname = mNoteDao.getALLnames();
+        return mname;
+    }
 
 
 
-    LiveData<List<Notes>> getNote(String topic) {
-        mNotes = mNoteDao.getNote(topic);
+    LiveData<List<Notes>> getNotet(String topic) {
+        mNotes = mNoteDao.getNotet(topic);
+        return mNotes;
+    }
+    LiveData<List<Notes>> getNoten(String name) {
+        mNotes = mNoteDao.getNoten(name);
         return mNotes;
     }
 
