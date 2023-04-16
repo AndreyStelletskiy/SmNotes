@@ -146,7 +146,7 @@ public class Home extends Fragment {
 
                         btn[im] = new Button(getContext());
                         btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                        btn[im].setText("i");
+                        btn[im].setText("Справка");
                         id = View.generateViewId();
                         btn[im].setId(id);
                         btn[im].setBackgroundColor(Color.WHITE);
@@ -240,7 +240,7 @@ public class Home extends Fragment {
 
                         btn[im] = new Button(getContext());
                         btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                        btn[im].setText("i");
+                        btn[im].setText("Справка");
                         id = View.generateViewId();
                         btn[im].setId(id);
                         btn[im].setBackgroundColor(Color.WHITE);
@@ -367,7 +367,7 @@ public class Home extends Fragment {
 
             btn[im] = new Button(getContext());
             btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-            btn[im].setText("i");
+            btn[im].setText("Справка");
             id = View.generateViewId();
             btn[im].setId(id);
             btn[im].setBackgroundColor(Color.WHITE);

@@ -1,11 +1,18 @@
 package com.example.smnotes;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +83,24 @@ public class infoFragment extends DialogFragment {
             }
         });
         TextView  info = view.findViewById(R.id.textinfo);
-        info.setText("Приятного использования. \nПо вопросам пишите на почту: a.stelletskiy@ya.ru\nderected Andrey Stelletskiy");
+         /*info.setText("\n\n\n  Вы скачали приложение Умные заметки (Smart Notes)." +
+                "\nДля создания заметки нужно заполнить 3 поля: название, тему и текст заметки." +
+                "\n  Заметки отображаются общим списком или сгруппированными по теме или названию." +
+                "\nПри удалении заметки она сразу удаляется (не попадает в карзину)." +
+                "\n  Приятного использования. " +
+                "\nПо вопросам и предложениям как улучшить пишите: a.stelletskiy@ya.ru" +
+                "\n  designed by Andrey Stelletskiy"); /*/
+        Linkify.addLinks(info, Linkify.EMAIL_ADDRESSES);
+        Spannable text = new SpannableString("\n\n\n  Вы скачали приложение Умные заметки (Smart Notes)." +
+                "\nДля создания заметки нужно заполнить 3 поля: название, тему и текст заметки." +
+                "\n  Заметки отображаются общим списком или сгруппированными по теме или названию." +
+                "\nПри удалении заметки она сразу удаляется (не попадает в карзину)." +
+                "\n  Приятного использования. " +
+                "\nПо вопросам и предложениям как улучшить пишите: a.stelletskiy@ya.ru" +
+                "\n  designed by Andrey Stelletskiy");
+        text.setSpan(new StyleSpan(Typeface.ITALIC), 27, 40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        info.setText(text);
         return view;
 
     }

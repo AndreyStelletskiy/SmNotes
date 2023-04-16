@@ -2,17 +2,22 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".infoFragment">
 
     <TextView
         android:id="@+id/textinfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="47dp"
-        android:text="Приятного использования.По вопросам пишите на почту: a.stelletskiy@ya.ru derected Andrey Stelletskiy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="0dp"
+        android:background="#00FE6D00"
+        android:autoLink="email"
+        android:linksClickable="true"
+        android:text="Приятного использования.По вопросам пишите на Email: a.stelletskiy@yandex.ru derected Andrey Stelletskiy"
+        android:textColor="#FE6D00"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

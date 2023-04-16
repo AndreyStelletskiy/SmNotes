@@ -74,7 +74,7 @@ public class NoteADD extends Fragment {
                     yes.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            NotesADD(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
+                            NotesADD( name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
                             //gsoto();
                         }
                     });

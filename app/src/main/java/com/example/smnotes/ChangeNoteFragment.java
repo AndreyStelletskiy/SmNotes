@@ -123,6 +123,7 @@ public class ChangeNoteFragment extends Fragment {
                 show.setVisibility(View.INVISIBLE);
                 change.setVisibility(View.INVISIBLE);
                 dell.setVisibility(View.INVISIBLE);
+                noyeschdell.setText("   Удалить заметку? \nВосстановление будет невозможно.");
 
                 yesch.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -176,7 +177,7 @@ public class ChangeNoteFragment extends Fragment {
                     yesch.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), note.getText().toString());
+                            Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), note.getText().toString().trim());
                             Toast.makeText(getActivity(), "Заметка изменена", Toast.LENGTH_SHORT).show();
                             mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
 
