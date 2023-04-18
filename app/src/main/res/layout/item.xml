@@ -22,8 +22,8 @@
             android:id="@+id/textname"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Название"
-            android:textColor="#000000" />
+            android:text="@string/item_name"
+            android:textColor="#FF000000" />
 
         <View
             android:id="@+id/divider8"
@@ -37,6 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="#FF000000"
             android:text="TextView" />
 
     </LinearLayout>
@@ -56,8 +57,8 @@
             android:id="@+id/Texttopic"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Тема"
-            android:textColor="#000000" />
+            android:text="@string/item_topic"
+            android:textColor="#FF000000" />
 
         <View
             android:id="@+id/divider7"
@@ -71,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="#FF000000"
             android:text="TextView" />
 
     </LinearLayout>
@@ -90,8 +92,8 @@
             android:id="@+id/Textnote"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="Заметка"
-            android:textColor="#000000" />
+            android:text="@string/item_note"
+            android:textColor="#FF000000" />
 
         <View
             android:id="@+id/divider9"
@@ -105,6 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="#FF000000"
             android:text="TextView" />
 
     </LinearLayout>
@@ -114,17 +117,11 @@
         android:layout_height="1dp"
         android:background="@color/black" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"/>
-
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="8dp"
-        android:background="@color/white"
-        android:backgroundTint="#FFFFFF" />
+        android:background="@color/design_default_color_on_primary" />
 
 </LinearLayout>
 

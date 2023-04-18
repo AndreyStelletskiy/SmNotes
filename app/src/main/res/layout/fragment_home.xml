@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Сортировать по:"
+            android:text="@string/sorted_by"
             android:textColor="#FE6D00"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Теме"
+            android:text="@string/sortedbytema"
+            android:textColor="#FFFFFFFF"
+            android:backgroundTint="#FE6D00"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent" />
 
