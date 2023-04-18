@@ -26,7 +26,7 @@
                 "\n  designed by Andrey Stelletskiy</string>
 
     <string name="save_note">Сохранить заметку</string>
-    <string name="sorted_by">Сортировать по:</string>
+    <string name="sorted_by">Группировать по:</string>
     <string name="sortedbytema">Теме</string>
     <string name="sortedbyname">Названию</string>
     <string name="notesit">заметки с темой:</string>

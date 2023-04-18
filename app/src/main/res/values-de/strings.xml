@@ -11,7 +11,7 @@
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="save_note">Notiz speichern</string>
-    <string name="sorted_by">Sortiere nach:</string>
+    <string name="sorted_by">Gruppiere nach:</string>
     <string name="sortedbytema">Thema</string>
     <string name="sortedbyname">Name</string>
     <string name="deletnote">Notiz löschen</string>

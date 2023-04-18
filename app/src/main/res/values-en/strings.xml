@@ -12,7 +12,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="save_note">Save note</string>
-    <string name="sorted_by">Sort by:</string>
+    <string name="sorted_by">Group by:</string>
     <string name="noteadd">note added</string>
     <string name="addname">Enter the title</string>
     <string name="addtopic">Enter the Subject </string>

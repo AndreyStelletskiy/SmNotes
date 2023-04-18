@@ -26,16 +26,16 @@ public interface NoteDao {
     @Query("DELETE from notes_table WHERE name IN (:name) AND topic IN(:topic) AND note IN(:note)")
     int deleteByname(String name, String topic, String note);
 
-    @Query("SELECT * FROM notes_table WHERE topic IN (:topic)")
+    @Query("SELECT * FROM notes_table WHERE topic IN (:topic) ORDER BY id DESC")
     LiveData<List<Notes>> getNotet(String topic);
 
-    @Query("SELECT * FROM notes_table WHERE name IN (:name)")
+    @Query("SELECT * FROM notes_table WHERE name IN (:name) ORDER BY id DESC")
     LiveData<List<Notes>> getNoten(String name);
 
-    @Query("SELECT topic FROM notes_table ORDER BY topic ASC")
+    @Query("SELECT topic FROM notes_table ORDER BY id DESC")
     LiveData<List<String>> getALLtopic();
 
-    @Query("SELECT name FROM notes_table ORDER BY name ASC")
+    @Query("SELECT name FROM notes_table ORDER BY id DESC")
     LiveData<List<String>> getALLnames();
 
 
