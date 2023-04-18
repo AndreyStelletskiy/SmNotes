@@ -7,7 +7,6 @@
     <string name="item_topic">Subject</string>
     <string name="item_note">note</string>
     <string name="noteadd_t">Create a new note</string>
-    <string name="noteadd_hname">title</string>
     <string name="noteadd_htopic">Subject</string>
     <string name="noteadd_hnote">note</string>
     <string name="yes">Yes</string>

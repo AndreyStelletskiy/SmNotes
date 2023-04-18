@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SmNotes</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="item_name">Name</string>
+    <string name="item_topic">Thema</string>
+    <string name="item_note">Die Notiz</string>
+    <string name="noteadd_t">Erstellen Sie eine neue Notiz</string>
+    <string name="noteadd_htopic">Thema</string>
+    <string name="noteadd_hnote">Die Notiz</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="save_note">Notiz speichern</string>
+    <string name="sorted_by">Sortiere nach:</string>
+    <string name="sortedbytema">Thema</string>
+    <string name="sortedbyname">Name</string>
+    <string name="deletnote">Notiz löschen</string>
+    <string name="saveinote">Notenänderung speichern</string>
+    <string name="delet">" Löschen"</string>
+    <string name="saveinotes">Änderungen\\n speichern</string>
+    <string name="cnote">Bearbeiten einer Notiz</string>
+    <string name="noteadd">Hinweis hinzugefügt</string>
+    <string name="addname">Geben Sie den Titel ein</string>
+    <string name="addtopic">Betreff eingeben</string>
+    <string name="addnote">Notiztext eingeben</string>
+    <string name="addall">Füllen Sie alle Felder aus</string>
+    <string name="info">\\n\\n\\n Sie haben die Smart Notes-Anwendung heruntergeladen.\" \"\\nUm eine Notiz zu erstellen, müssen Sie 3 Felder ausfüllen: Titel, Betreff und Notiztext.\" \"\\n Notizen werden als allgemeine Liste oder angezeigt gruppiert nach Thema oder Titel.\" \"\\nWenn Sie eine Notiz löschen, wird sie sofort gelöscht (sie wandert nicht in den Papierkorb).\" \"\\n Viel Spaß damit. \" \"\\nBei Fragen und Verbesserungsvorschlägen schreiben Sie an: a.stelletskiy@ya.ru\" \"\\n entworfen von Andrey Stelletskiy</string>
+    <string name="cnotes">" Hinweis geändert"</string>
+    <string name="ct">Notiz löschen?\\nWiederherstellung ist nicht möglich</string>
+    <string name="cndell">" Hinweis gelöscht"</string>
+    <string name="alln">Alle Notizen</string>
+    <string name="all">Alle</string>
+    <string name="infot">Referenz</string>
+    <string name="notesit">Betreffnotizen:</string>
+</resources>
+

@@ -7,7 +7,6 @@
     <string name="item_topic">Тема</string>
     <string name="item_note">Заметка</string>
     <string name="noteadd_t">Создание новой заметки</string>
-    <string name="noteadd_hname">Название</string>
     <string name="noteadd_htopic">Тема</string>
     <string name="noteadd_hnote">заметка</string>
     <string name="yes">Да</string>
