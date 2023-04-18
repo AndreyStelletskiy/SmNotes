@@ -90,7 +90,7 @@ public class ChangeNoteFragment extends Fragment {
         name.setText(Note[0]);
         topic.setText(Note[1]);
         note.setText(Note[2]);
-        show.setText("Изменение заметки "+Note[0]);
+        show.setText(getResources().getString(R.string.cnote)+Note[0]);
         mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
 
         change.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class ChangeNoteFragment extends Fragment {
                 Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), note.getText().toString());
                 mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
                 if ((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (note.getText().toString().equals(Note[2]))!=true){
-                    Toast.makeText(getActivity(), "Заметка изменена", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.cnotes), Toast.LENGTH_SHORT).show();
                 }
 
                 Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
@@ -123,14 +123,14 @@ public class ChangeNoteFragment extends Fragment {
                 show.setVisibility(View.INVISIBLE);
                 change.setVisibility(View.INVISIBLE);
                 dell.setVisibility(View.INVISIBLE);
-                noyeschdell.setText("   Удалить заметку? \nВосстановление будет невозможно.");
+                noyeschdell.setText(getResources().getString(R.string.ct));
 
                 yesch.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mNoteViewModel.deleteByname(Note[0],Note[1],Note[2]);
 
-                        Toast.makeText(getActivity(), "Заметка удалена", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getResources().getString(R.string.cndell), Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
                     }
                 });
@@ -178,7 +178,7 @@ public class ChangeNoteFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), note.getText().toString().trim());
-                            Toast.makeText(getActivity(), "Заметка изменена", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getString(R.string.cnotes), Toast.LENGTH_SHORT).show();
                             mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
 
                             Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);

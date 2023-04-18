@@ -105,15 +105,16 @@ public class NoteADD extends Fragment {
         Notes note = new Notes(name, topic, nnote);
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
             mNoteViewModel.insert(note);
-            Toast.makeText(getActivity(), "Заметка добавлена", Toast.LENGTH_SHORT).show();
+            String text = getResources().getString(R.string.noteadd);
+            Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
 
             Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
         }
         else{
-            if(name.length()==0 && topic.length()!=0 &&nnote.length()!=0){Toast.makeText(getActivity(), "Введите имя", Toast.LENGTH_SHORT).show();}
-            if(name.length()!=0 && topic.length()==0 &&nnote.length()!=0){Toast.makeText(getActivity(), "Введите тему", Toast.LENGTH_SHORT).show();}
-            if(name.length()!=0 && topic.length()!=0 &&nnote.length()==0){Toast.makeText(getActivity(), "Введите заметку", Toast.LENGTH_SHORT).show();}
-            else {Toast.makeText(getActivity(), "Заполните все поля", Toast.LENGTH_SHORT).show();}
+            if(name.length()==0 && topic.length()!=0 &&nnote.length()!=0){Toast.makeText(getActivity(), getResources().getString(R.string.addname), Toast.LENGTH_SHORT).show();}
+            if(name.length()!=0 && topic.length()==0 &&nnote.length()!=0){Toast.makeText(getActivity(), getResources().getString(R.string.addtopic), Toast.LENGTH_SHORT).show();}
+            if(name.length()!=0 && topic.length()!=0 &&nnote.length()==0){Toast.makeText(getActivity(), getResources().getString(R.string.addnote), Toast.LENGTH_SHORT).show();}
+            else {Toast.makeText(getActivity(), getResources().getString(R.string.addall), Toast.LENGTH_SHORT).show();}
         }
 
 

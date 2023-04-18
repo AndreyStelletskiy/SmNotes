@@ -1,5 +1,46 @@
 <resources>
     <string name="app_name">SmNotes</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+    <string name="item_name">Название</string>
+    <string name="item_topic">Тема</string>
+    <string name="item_note">Заметка</string>
+    <string name="noteadd_t">Создание новой заметки</string>
+    <string name="noteadd_hname">Название</string>
+    <string name="noteadd_htopic">Тема</string>
+    <string name="noteadd_hnote">заметка</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="noteadd">заметка добавлена</string>
+
+    <string name="addname">Введите название</string>
+    <string name="addtopic">Введите тему</string>
+    <string name="addnote">Введите текст заметки</string>
+    <string name="addall">Заполните все поля</string>
+    <string name="info">\n\n\n  Вы скачали приложение Умные заметки (Smart Notes)."
+                "\nДля создания заметки нужно заполнить 3 поля: название, тему и текст заметки."
+                "\n  Заметки отображаются общим списком или сгруппированными по теме или названию."
+                "\nПри удалении заметки она сразу удаляется (не попадает в карзину)."
+                "\n  Приятного использования. "
+                "\nПо вопросам и предложениям как улучшить пишите: a.stelletskiy@ya.ru"
+                "\n  designed by Andrey Stelletskiy</string>
+
+    <string name="save_note">Сохранить заметку</string>
+    <string name="sorted_by">Сортировать по:</string>
+    <string name="sortedbytema">Теме</string>
+    <string name="sortedbyname">Названию</string>
+    <string name="notesit">заметки с темой:</string>
+    <string name="deletnote">Удалить заметку?</string>
+    <string name="saveinote">Сохранить изменения заметки?</string>
+    <string name="delet">Удалить</string>
+    <string name="saveinotes">Cохранить\n изменения</string>
+    <string name="cnote">Изменение заметки</string>
+    <string name="cnotes">Заметка изменена</string>
+    <string name="cndell">Заметка удалена</string>
+    <string name="alln">Все заметки</string>
+    <string name="all">Все</string>
+    <string name="infot">Справка</string>
+    <string name="ct">   Удалить заметку?\nВосстановление будет невозможно.</string>
+
 </resources>

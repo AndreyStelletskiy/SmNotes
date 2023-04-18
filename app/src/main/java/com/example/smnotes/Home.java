@@ -105,13 +105,13 @@ public class Home extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         Button sorted = view.findViewById(R.id.sortedby);
-        sorted.setText("Теме");
+        sorted.setText(getResources().getText(R.string.sortedbytema));
         sorted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(sortedby==0){
                     sortedby=1;
-                    sorted.setText("Теме");
+                    sorted.setText(getResources().getText(R.string.sortedbytema));
                     mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
                         Set<String> set = new LinkedHashSet<>(topic);
                         List<String> topicnames = new ArrayList<>(set);
@@ -123,7 +123,7 @@ public class Home extends Fragment {
                         System.out.println(im);
                         btn[0] = new Button(getContext());
                         btn[0].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                        btn[0].setText("Все");
+                        btn[0].setText(getResources().getText(R.string.all));
                         int id = View.generateViewId();
                         btn[0].setId(id);
                         layout.removeAllViews();
@@ -134,7 +134,7 @@ public class Home extends Fragment {
                             public void onClick(View v) {
                                 mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), topic -> {
                                     adapter.submitList(topic);
-                                    Toast.makeText(getActivity(), "все заметки", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), getResources().getText(R.string.alln), Toast.LENGTH_SHORT).show();
                                     btn[colb].setClickable(true);
                                     btn[0].setClickable(false);
                                     btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
@@ -146,17 +146,17 @@ public class Home extends Fragment {
 
                         btn[im] = new Button(getContext());
                         btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                        btn[im].setText("Справка");
+                        btn[im].setText(getResources().getText(R.string.infot));
                         id = View.generateViewId();
                         btn[im].setId(id);
-                        btn[im].setBackgroundColor(Color.WHITE);
+                        btn[im].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
 
                         View devider = new View(getContext());
                         int dividerHeight = (int) (getResources().getDisplayMetrics().density * 5); // 1dp to pixels
                         devider.setLayoutParams(new LayoutParams(dividerHeight, LayoutParams.MATCH_PARENT));
                         devider.setBackgroundColor(Color.parseColor("#FE6D00"));
 
-                        btn[im].setTextColor(Color.BLUE);
+                        btn[im].setTextColor(Color.WHITE);
                         btn[im].setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -205,7 +205,7 @@ public class Home extends Fragment {
                     });
                 }
                 else {sortedby=0;
-                    sorted.setText("Названию");
+                    sorted.setText(getResources().getText(R.string.sortedbyname));
                     mNotesViewModel.getALLnames().observe(getViewLifecycleOwner(), names -> {
                         Set<String> set=new LinkedHashSet<>(names);
                         List<String> topicnames = new ArrayList<>(set);
@@ -217,7 +217,7 @@ public class Home extends Fragment {
                         System.out.println(im);
                         btn[0] = new Button(getContext());
                         btn[0].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                        btn[0].setText("Все");
+                        btn[0].setText(getResources().getText(R.string.all));
                         int id = View.generateViewId();
                         btn[0].setId(id);
                         layout.removeAllViews();
@@ -228,7 +228,7 @@ public class Home extends Fragment {
                             public void onClick(View v) {
                                 mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), topic -> {
                                     adapter.submitList(topic);
-                                    Toast.makeText(getActivity(), "все заметки", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), getResources().getText(R.string.alln), Toast.LENGTH_SHORT).show();
                                     btn[colb].setClickable(true);
                                     btn[0].setClickable(false);
                                     btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
@@ -240,17 +240,18 @@ public class Home extends Fragment {
 
                         btn[im] = new Button(getContext());
                         btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                        btn[im].setText("Справка");
+                        btn[im].setText(getResources().getText(R.string.infot));
                         id = View.generateViewId();
                         btn[im].setId(id);
-                        btn[im].setBackgroundColor(Color.WHITE);
+
 
                         View devider = new View(getContext());
                         int dividerHeight = (int) (getResources().getDisplayMetrics().density * 5); // 1dp to pixels
                         devider.setLayoutParams(new LayoutParams(dividerHeight, LayoutParams.MATCH_PARENT));
                         devider.setBackgroundColor(Color.parseColor("#FE6D00"));
 
-                        btn[im].setTextColor(Color.BLUE);
+                        btn[im].setTextColor(Color.WHITE);
+                        btn[im].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
                         btn[im].setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -332,7 +333,7 @@ public class Home extends Fragment {
             }
         });
 
-        sorted.setText("Теме");
+        sorted.setText(getResources().getText(R.string.sortedbytema));
         mNotesViewModel.getALLtopic().observe(getViewLifecycleOwner(), topic -> {
             Set<String> set = new LinkedHashSet<>(topic);
             List<String> topicnames = new ArrayList<>(set);
@@ -344,7 +345,7 @@ public class Home extends Fragment {
             System.out.println(im);
             btn[0] = new Button(getContext());
             btn[0].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-            btn[0].setText("Все");
+            btn[0].setText(getResources().getText(R.string.all));
             int id = View.generateViewId();
             btn[0].setId(id);
             layout.removeAllViews();
@@ -355,7 +356,7 @@ public class Home extends Fragment {
                 public void onClick(View v) {
                     mNotesViewModel.getAllNotes().observe(getViewLifecycleOwner(), topic -> {
                         adapter.submitList(topic);
-                        Toast.makeText(getActivity(), "все заметки", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getResources().getText(R.string.alln), Toast.LENGTH_SHORT).show();
                         btn[colb].setClickable(true);
                         btn[0].setClickable(false);
                         btn[0].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);
@@ -367,17 +368,17 @@ public class Home extends Fragment {
 
             btn[im] = new Button(getContext());
             btn[im].setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-            btn[im].setText("Справка");
+            btn[im].setText(getResources().getText(R.string.infot));
             id = View.generateViewId();
             btn[im].setId(id);
-            btn[im].setBackgroundColor(Color.WHITE);
+            btn[im].getBackground().setColorFilter(Color.parseColor("#FE6D00"), PorterDuff.Mode.MULTIPLY);
 
             View devider = new View(getContext());
             int dividerHeight = (int) (getResources().getDisplayMetrics().density * 5); // 1dp to pixels
             devider.setLayoutParams(new LayoutParams(dividerHeight, LayoutParams.MATCH_PARENT));
             devider.setBackgroundColor(Color.parseColor("#FE6D00"));
 
-            btn[im].setTextColor(Color.BLUE);
+            btn[im].setTextColor(Color.WHITE);
             btn[im].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -406,7 +407,7 @@ public class Home extends Fragment {
 
                         mNotesViewModel.getNotet(topicnames.get(finalI)).observe(getViewLifecycleOwner(), topic -> {
                             adapter.submitList(topic);
-                            Toast.makeText(getActivity(), "Заметки с темой: " + topicnames.get(finalI), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getText(R.string.notesit) + topicnames.get(finalI), Toast.LENGTH_SHORT).show();
                             btn[colb].setClickable(true);
                             btn[finalI + 1].setClickable(false);
                             btn[finalI + 1].getBackground().setColorFilter(Color.parseColor("#FF9A9A9A"), PorterDuff.Mode.MULTIPLY);

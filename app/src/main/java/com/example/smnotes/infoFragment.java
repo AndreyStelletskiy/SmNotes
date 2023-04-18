@@ -83,21 +83,8 @@ public class infoFragment extends DialogFragment {
             }
         });
         TextView  info = view.findViewById(R.id.textinfo);
-         /*info.setText("\n\n\n  Вы скачали приложение Умные заметки (Smart Notes)." +
-                "\nДля создания заметки нужно заполнить 3 поля: название, тему и текст заметки." +
-                "\n  Заметки отображаются общим списком или сгруппированными по теме или названию." +
-                "\nПри удалении заметки она сразу удаляется (не попадает в карзину)." +
-                "\n  Приятного использования. " +
-                "\nПо вопросам и предложениям как улучшить пишите: a.stelletskiy@ya.ru" +
-                "\n  designed by Andrey Stelletskiy"); /*/
         Linkify.addLinks(info, Linkify.EMAIL_ADDRESSES);
-        Spannable text = new SpannableString("\n\n\n  Вы скачали приложение Умные заметки (Smart Notes)." +
-                "\nДля создания заметки нужно заполнить 3 поля: название, тему и текст заметки." +
-                "\n  Заметки отображаются общим списком или сгруппированными по теме или названию." +
-                "\nПри удалении заметки она сразу удаляется (не попадает в карзину)." +
-                "\n  Приятного использования. " +
-                "\nПо вопросам и предложениям как улучшить пишите: a.stelletskiy@ya.ru" +
-                "\n  designed by Andrey Stelletskiy");
+        Spannable text = new SpannableString(getResources().getString(R.string.info));
         text.setSpan(new StyleSpan(Typeface.ITALIC), 27, 40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         info.setText(text);

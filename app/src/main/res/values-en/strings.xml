@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SmNotes</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+    <string name="item_name">title</string>
+    <string name="item_topic">Subject</string>
+    <string name="item_note">note</string>
+    <string name="noteadd_t">Create a new note</string>
+    <string name="noteadd_hname">title</string>
+    <string name="noteadd_htopic">Subject</string>
+    <string name="noteadd_hnote">note</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save_note">Save note</string>
+    <string name="sorted_by">Sort by:</string>
+    <string name="noteadd">note added</string>
+    <string name="addname">Enter the title</string>
+    <string name="addtopic">Enter the Subject </string>
+    <string name="addnote">Enter note text</string>
+    <string name="addall">Fill in all the fields</string>
+    <string name="info">\n\n\n You have downloaded the Smart Notes app."
+                "\nTo create a note, you need to fill in 3 fields: title, subject and note text."
+                "\n Notes are displayed as a general list or grouped by topic or title."
+                "\nWhen a note is deleted, it is deleted immediately (does not go to the trash)."
+                "\n Enjoy using it."
+                "\nFor questions and suggestions on how to improve, write to: a.stelletskiy@ya.ru"
+                "\n designed by Andrey Stelletskiy</string>
+    <string name="sortedbytema">Subject</string>
+    <string name="sortedbyname">Name</string>
+    <string name="deletnote">Delete note?</string>
+    <string name="saveinote">Save Note changes?</string>
+    <string name="delet">delet</string>
+    <string name="saveinotes">save \n changes</string>
+    <string name="cnote">Note changes</string>
+    <string name="cnotes">Note changed</string>
+    <string name="cndell">Note deleted</string>
+    <string name="alln">AllNotes</string>
+    <string name="all">All</string>
+    <string name="infot">Reference</string>
+    <string name="notesit">Notes with a theme:</string>
+    <string name="ct">      Delete note?\nRestoration will be impossible.</string>
+</resources>
