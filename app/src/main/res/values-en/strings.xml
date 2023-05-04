@@ -31,7 +31,7 @@
     <string name="saveinote">Save Note changes?</string>
     <string name="delet">delet</string>
     <string name="saveinotes">save \n changes</string>
-    <string name="cnote">Note changes</string>
+    <string name="cnote">"Note changes "</string>
     <string name="cnotes">Note changed</string>
     <string name="cndell">Note deleted</string>
     <string name="alln">AllNotes</string>

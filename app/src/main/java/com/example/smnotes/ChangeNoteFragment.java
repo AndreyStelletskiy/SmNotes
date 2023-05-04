@@ -18,12 +18,17 @@ import com.example.smnotes.noteadd.NoteViewModel;
 import com.example.smnotes.noteadd.Notes;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ChangeNoteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class ChangeNoteFragment extends Fragment {
+    private EditText name ;
+    private EditText topic ;
+    private EditText сnote;
+    private int pb = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,25 +85,25 @@ public class ChangeNoteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_change_note, container, false);
-        EditText name = view.findViewById(R.id.Change_Name);
-        EditText topic = view.findViewById(R.id.Change_Topic);
-        EditText note = view.findViewById(R.id.Change_Note);
+         name = view.findViewById(R.id.Change_Name);
+         topic = view.findViewById(R.id.Change_Topic);
+         сnote = view.findViewById(R.id.Change_Note);
         TextView show = view.findViewById(R.id.Show);
         Button change = view.findViewById(R.id.ChangeNote);
         Button dell = view.findViewById(R.id.ChDell);
         TextView noyeschdell = view.findViewById(R.id.noyeschdell);
         name.setText(Note[0]);
         topic.setText(Note[1]);
-        note.setText(Note[2]);
-        show.setText(getResources().getString(R.string.cnote)+Note[0]);
+        сnote.setText(Note[2]);
+        show.setText(getResources().getString(R.string.cnote)+" "+Note[0]);
         mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), note.getText().toString());
+                Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), сnote.getText().toString());
                 mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
-                if ((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (note.getText().toString().equals(Note[2]))!=true){
+                if ((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true){
                     Toast.makeText(getActivity(), getResources().getString(R.string.cnotes), Toast.LENGTH_SHORT).show();
                 }
 
@@ -110,6 +115,7 @@ public class ChangeNoteFragment extends Fragment {
         dell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pb = 1;
                 Button yesch = view.findViewById(R.id.yesch);
                 Button noch = view.findViewById(R.id.noch);
                 TextView noyeschdell = view.findViewById(R.id.noyeschdell);
@@ -119,7 +125,7 @@ public class ChangeNoteFragment extends Fragment {
                 noyeschdell.setVisibility(View.VISIBLE);
                 name.setVisibility(View.INVISIBLE);
                 topic.setVisibility(View.INVISIBLE);
-                note.setVisibility(View.INVISIBLE);
+                сnote.setVisibility(View.INVISIBLE);
                 show.setVisibility(View.INVISIBLE);
                 change.setVisibility(View.INVISIBLE);
                 dell.setVisibility(View.INVISIBLE);
@@ -160,7 +166,7 @@ public class ChangeNoteFragment extends Fragment {
             public void onClick(View v) {
 
 
-                if ((name.getText().toString().equals(Note[0]))==true && (topic.getText().toString().equals(Note[1]))==true && (note.getText().toString().equals(Note[2]))==true){
+                if ((name.getText().toString().equals(Note[0]))==true && (topic.getText().toString().equals(Note[1]))==true && (сnote.getText().toString().equals(Note[2]))==true){
                     Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);}
                 else{
 
@@ -169,7 +175,7 @@ public class ChangeNoteFragment extends Fragment {
                     noyesch.setVisibility(View.VISIBLE);
                     name.setVisibility(View.INVISIBLE);
                     topic.setVisibility(View.INVISIBLE);
-                    note.setVisibility(View.INVISIBLE);
+                    сnote.setVisibility(View.INVISIBLE);
                     show.setVisibility(View.INVISIBLE);
                     change.setVisibility(View.INVISIBLE);
                     dell.setVisibility(View.INVISIBLE);
@@ -177,7 +183,7 @@ public class ChangeNoteFragment extends Fragment {
                     yesch.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), note.getText().toString().trim());
+                            Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
                             Toast.makeText(getActivity(), getResources().getString(R.string.cnotes), Toast.LENGTH_SHORT).show();
                             mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
 
@@ -202,6 +208,16 @@ public class ChangeNoteFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    public void onDestroyView () {
+        if(pb !=1) {
+            Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
+            mNoteViewModel.insert(note);
+            String text = getResources().getString(R.string.noteadd);
+            Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+        }
+        super.onDestroyView();
     }
 
 }

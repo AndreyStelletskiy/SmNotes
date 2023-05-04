@@ -18,7 +18,7 @@
     <string name="saveinote">Notenänderung speichern</string>
     <string name="delet">" Löschen"</string>
     <string name="saveinotes">Änderungen\\n speichern</string>
-    <string name="cnote">Bearbeiten einer Notiz</string>
+    <string name="cnote">"Bearbeiten einer Notiz "</string>
     <string name="noteadd">Hinweis hinzugefügt</string>
     <string name="addname">Geben Sie den Titel ein</string>
     <string name="addtopic">Betreff eingeben</string>
@@ -28,7 +28,7 @@
     <string name="cnotes">" Hinweis geändert"</string>
     <string name="ct">Notiz löschen?\\nWiederherstellung ist nicht möglich</string>
     <string name="cndell">" Hinweis gelöscht"</string>
-    <string name="alln">Alle Notizen</string>
+    <string name="alln">Alle Notizen </string>
     <string name="all">Alle</string>
     <string name="infot">Referenz</string>
     <string name="notesit">Betreffnotizen:</string>

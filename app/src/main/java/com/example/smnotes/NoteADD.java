@@ -24,6 +24,9 @@ public class NoteADD extends Fragment {
     private NoteViewModel mNoteViewModel;
     private FloatingActionButton btn;
     private FloatingActionButton back;
+    private EditText name ;
+    private EditText topic ;
+    private EditText nnote;
 
 
     @Override
@@ -42,9 +45,9 @@ public class NoteADD extends Fragment {
 
         btn = view.findViewById(R.id.ADDNOTE);
         back = view.findViewById(R.id.back);
-        EditText name = view.findViewById(R.id.New_Name);
-        EditText topic = view.findViewById(R.id.New_Topic);
-        EditText nnote = view.findViewById(R.id.New_Note);
+         name = view.findViewById(R.id.New_Name);
+         topic = view.findViewById(R.id.New_Topic);
+         nnote = view.findViewById(R.id.New_Note);
         mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +121,14 @@ public class NoteADD extends Fragment {
         }
 
 
+    }
+
+    public void onDestroyView () {
+        Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
+        mNoteViewModel.insert(note);
+        String text = getResources().getString(R.string.noteadd);
+        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+        super.onDestroyView();
     }
 
 }
