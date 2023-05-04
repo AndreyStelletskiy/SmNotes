@@ -16,6 +16,7 @@ public class Notes {
     @ColumnInfo(name = "name")
     private String mName;
 
+
     @NonNull
     @ColumnInfo(name = "topic")
     private String mTopic;
@@ -23,6 +24,8 @@ public class Notes {
     @NonNull
     @ColumnInfo(name = "note")
     private String mNote;
+
+
 
     public Notes(@NonNull String name, @NonNull String topic, @NonNull String note) {
         this.mName = name;
