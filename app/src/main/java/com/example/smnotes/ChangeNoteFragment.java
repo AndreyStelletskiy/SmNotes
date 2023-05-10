@@ -164,6 +164,7 @@ public class ChangeNoteFragment extends Fragment {
         backch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pb=1;
 
 
                 if ((name.getText().toString().equals(Note[0]))==true && (topic.getText().toString().equals(Note[1]))==true && (сnote.getText().toString().equals(Note[2]))==true){
@@ -211,7 +212,7 @@ public class ChangeNoteFragment extends Fragment {
     }
 
     public void onDestroyView () {
-        if(pb !=1) {
+        if ((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true){
             Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
             mNoteViewModel.insert(note);
             String text = getResources().getString(R.string.noteadd);

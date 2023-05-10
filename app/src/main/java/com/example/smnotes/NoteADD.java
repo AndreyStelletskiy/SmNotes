@@ -27,6 +27,7 @@ public class NoteADD extends Fragment {
     private EditText name ;
     private EditText topic ;
     private EditText nnote;
+    private int bb = 0 ;
 
 
     @Override
@@ -79,6 +80,7 @@ public class NoteADD extends Fragment {
                         public void onClick(View v) {
                             NotesADD( name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
                             //gsoto();
+                            bb=1;
                         }
                     });
 
@@ -86,6 +88,7 @@ public class NoteADD extends Fragment {
                         @Override
                         public void onClick(View v) {
                             gsoto();
+                            bb=1;
                         }
                     });
 
@@ -110,24 +113,36 @@ public class NoteADD extends Fragment {
             mNoteViewModel.insert(note);
             String text = getResources().getString(R.string.noteadd);
             Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+            bb=1;
 
             Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
         }
         else{
-            if(name.length()==0 && topic.length()!=0 &&nnote.length()!=0){Toast.makeText(getActivity(), getResources().getString(R.string.addname), Toast.LENGTH_SHORT).show();}
-            if(name.length()!=0 && topic.length()==0 &&nnote.length()!=0){Toast.makeText(getActivity(), getResources().getString(R.string.addtopic), Toast.LENGTH_SHORT).show();}
-            if(name.length()!=0 && topic.length()!=0 &&nnote.length()==0){Toast.makeText(getActivity(), getResources().getString(R.string.addnote), Toast.LENGTH_SHORT).show();}
-            else {Toast.makeText(getActivity(), getResources().getString(R.string.addall), Toast.LENGTH_SHORT).show();}
+            int ccc=0;
+            if(name.length()==0 && topic.length()!=0 &&nnote.length()!=0){
+                ccc=1;
+                Toast.makeText(getActivity(), getResources().getString(R.string.addname), Toast.LENGTH_SHORT).show();}
+            if(name.length()!=0 && topic.length()==0 &&nnote.length()!=0){
+                ccc=2;
+                Toast.makeText(getActivity(), getResources().getString(R.string.addtopic), Toast.LENGTH_SHORT).show();}
+            if(name.length()!=0 && topic.length()!=0 &&nnote.length()==0){
+                ccc=3;
+                Toast.makeText(getActivity(), getResources().getString(R.string.addnote), Toast.LENGTH_SHORT).show();}
+            if(ccc==0) {Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);}
         }
 
 
     }
 
     public void onDestroyView () {
-        Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
-        mNoteViewModel.insert(note);
-        String text = getResources().getString(R.string.noteadd);
-        Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+        if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
+            Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
+            if (bb == 0) {
+                mNoteViewModel.insert(note);
+                String text = getResources().getString(R.string.noteadd);
+                Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+            }
+        }
         super.onDestroyView();
     }
 
