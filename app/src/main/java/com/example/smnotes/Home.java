@@ -1,6 +1,7 @@
 package com.example.smnotes;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
@@ -8,6 +9,7 @@ import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -56,7 +58,6 @@ public class Home extends Fragment {
     private String mParam1;
     private String mParam2;
     private int c;
-    private int infob;
     private  int colb;
     int sortedby=1;
 
@@ -90,11 +91,20 @@ public class Home extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         c =0;
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                try {
+                    requireActivity().finish();
+                } catch (Exception e) {
+                }
+
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
 
-    private LiveData<List<Notes>> notees;
-    LinearLayout mainLayer;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -418,8 +428,6 @@ public class Home extends Fragment {
                     }
                 });
                 i--;
-
-                // слой, к которому кнопку хотите прикрепить
             }
             layout.addView(devider);
 
@@ -429,6 +437,4 @@ public class Home extends Fragment {
 
             return view;
         }
-
-
-}
+    }
