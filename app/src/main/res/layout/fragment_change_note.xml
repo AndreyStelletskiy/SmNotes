@@ -127,6 +127,7 @@
                 android:layout_height="49dp"
                 android:layout_marginStart="2dp"
                 android:clickable="true"
+                app:backgroundTint="#FF8400"
                 android:src="?attr/actionModeCloseDrawable"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

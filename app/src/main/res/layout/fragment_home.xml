@@ -29,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            app:backgroundTint="#FF8400"
             android:src="@drawable/baseline_note_add_24"
             android:contentDescription="add_word"/>
 
