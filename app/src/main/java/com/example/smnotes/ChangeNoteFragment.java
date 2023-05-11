@@ -1,11 +1,13 @@
 package com.example.smnotes;
 
+import android.database.SQLException;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,12 +30,12 @@ public class ChangeNoteFragment extends Fragment {
     private EditText name ;
     private EditText topic ;
     private EditText сnote;
-    private int pb = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private int prc =0;
     private Notes Snote;
 
     // TODO: Rename and change types of parameters
@@ -103,19 +105,20 @@ public class ChangeNoteFragment extends Fragment {
             public void onClick(View v) {
                 Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), сnote.getText().toString());
                 mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
-                if ((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true){
-                    Toast.makeText(getActivity(), getResources().getString(R.string.cnotes), Toast.LENGTH_SHORT).show();
-                }
 
                 Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
-                mNoteViewModel.insert(Nnote);
+                try {
+                    prc =1;
+                    mNoteViewModel.insert(Nnote);
+                } catch (SQLException e){
+                    Log.d("RRR", "SQLException");
+                }
 
             }
         });
         dell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pb = 1;
                 Button yesch = view.findViewById(R.id.yesch);
                 Button noch = view.findViewById(R.id.noch);
                 TextView noyeschdell = view.findViewById(R.id.noyeschdell);
@@ -164,7 +167,7 @@ public class ChangeNoteFragment extends Fragment {
         backch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pb=1;
+
 
 
                 if ((name.getText().toString().equals(Note[0]))==true && (topic.getText().toString().equals(Note[1]))==true && (сnote.getText().toString().equals(Note[2]))==true){
@@ -185,11 +188,15 @@ public class ChangeNoteFragment extends Fragment {
                         @Override
                         public void onClick(View v) {
                             Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
-                            Toast.makeText(getActivity(), getResources().getString(R.string.cnotes), Toast.LENGTH_SHORT).show();
                             mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
 
                             Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
-                            mNoteViewModel.insert(Nnote);
+                            try {
+                                    prc =1;
+                                mNoteViewModel.insert(Nnote);
+                            } catch (SQLException e){
+                                Toast.makeText(getActivity(), "Такая заметка уже есть", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
 
@@ -214,9 +221,12 @@ public class ChangeNoteFragment extends Fragment {
     public void onDestroyView () {
         if ((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true){
             Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
-            mNoteViewModel.insert(note);
-            String text = getResources().getString(R.string.noteadd);
-            Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+            try {
+                if (prc==0){
+                mNoteViewModel.insert(note);}
+            } catch (SQLException e){
+                Toast.makeText(getActivity(), "Такая заметка уже есть", Toast.LENGTH_SHORT).show();
+            }
         }
         super.onDestroyView();
     }

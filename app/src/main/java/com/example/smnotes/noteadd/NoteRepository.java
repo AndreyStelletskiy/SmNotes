@@ -1,10 +1,16 @@
 package com.example.smnotes.noteadd;
 
+import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
+
+import com.example.smnotes.MainActivity;
 
 import java.util.List;
 
@@ -16,7 +22,9 @@ public class NoteRepository {
     private LiveData<List<String>> mtopic;
     private LiveData<List<String>> mname;
 
+    private Application application;
     NoteRepository(Application application) {
+        this.application = application;
         NoteRoomDatabase db = NoteRoomDatabase.getDatabase(application);
         mNoteDao = db.noteDao();
         mAllNotes = mNoteDao.getAlphabetizedWords();
@@ -34,7 +42,26 @@ public class NoteRepository {
     // that you're not doing any long running operations on the main thread, blocking the UI.
     void insert(Notes note) {
         NoteRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mNoteDao.insert(note);
+            try {
+                mNoteDao.insert(note);
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // write your code here
+                        Toast.makeText(application.getApplicationContext(), "Заметка сохранена", Toast.LENGTH_LONG).show();
+                    }
+                });
+            } catch (Exception e) {
+                Log.d("RRR" , "123");
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // write your code here
+                        Toast.makeText(application.getApplicationContext(), "Заметка с таким текстом уже сушествует", Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
         });
        /* new Thread(new Runnable() {
             @Override

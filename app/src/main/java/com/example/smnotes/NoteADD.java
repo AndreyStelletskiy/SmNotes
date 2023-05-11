@@ -1,8 +1,11 @@
 package com.example.smnotes;
 
-import static android.view.View.GONE;
+
+
+import android.database.SQLException;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -110,10 +113,17 @@ public class NoteADD extends Fragment {
     public void NotesADD(String name, String topic, String nnote){
         Notes note = new Notes(name, topic, nnote);
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
-            mNoteViewModel.insert(note);
-            String text = getResources().getString(R.string.noteadd);
-            Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
             bb=1;
+
+            try {
+
+                mNoteViewModel.insert(note);
+                String text = getResources().getString(R.string.noteadd);
+                //Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+            } catch (Exception e){
+                Toast.makeText(getActivity(), "Такая заметка уже есть", Toast.LENGTH_SHORT).show();
+                Log.d("rrr" , "vmvbrivnvnrnvr");
+            }
 
             Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
         }
@@ -138,9 +148,14 @@ public class NoteADD extends Fragment {
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
             Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
             if (bb == 0) {
-                mNoteViewModel.insert(note);
-                String text = getResources().getString(R.string.noteadd);
-                Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+                try {
+
+                    mNoteViewModel.insert(note);
+                    String text = getResources().getString(R.string.noteadd);
+                    Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+                } catch (SQLException e){
+                    Toast.makeText(getActivity(), "Такая заметка уже есть", Toast.LENGTH_SHORT).show();
+                }
             }
         }
         super.onDestroyView();

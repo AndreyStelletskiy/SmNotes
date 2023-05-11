@@ -1,6 +1,7 @@
 package com.example.smnotes.noteadd;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -11,7 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Notes.class}, version = 2, exportSchema = false)
+@Database(entities = {Notes.class}, version = 1, exportSchema = false)
 public abstract class NoteRoomDatabase extends RoomDatabase {
 
     // Это создание таблицы!!!
@@ -29,7 +30,7 @@ public abstract class NoteRoomDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     NoteRoomDatabase.class, "note_database")
                             .addCallback(sRoomDatabaseCallback)
-                            //.fallbackToDestructiveMigration() <- drop!
+                           // .fallbackToDestructiveMigration()// <- drop!
                             .build();
                 }
             }
@@ -51,7 +52,11 @@ public abstract class NoteRoomDatabase extends RoomDatabase {
                 dao.deleteAll();
 
                 Notes notes = new Notes("Добро пожаловать", "Приветствие", "Приятного использования. \nПо вопросам пишите на почту: a.stelletskiy@ya.ru\nЕсли вы удолили эту заметку, воспользуйтесь справкой(находиться в конце тем или названий всех заметок)\nderected Andrey Stelletskiy");
-                dao.insert(notes);
+                try {
+                    dao.insert(notes);
+                } catch (Exception e) {
+                    Log.d("RRR" , "123");
+                }
             });
         }
     };

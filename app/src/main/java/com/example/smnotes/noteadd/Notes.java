@@ -3,9 +3,11 @@ package com.example.smnotes.noteadd;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "notes_table")
+@Entity(tableName = "notes_table", indices = {@Index(value = {"note"},
+        unique = true)})
 public class Notes {
 
 
@@ -24,6 +26,8 @@ public class Notes {
     @NonNull
     @ColumnInfo(name = "note")
     private String mNote;
+
+
 
 
 
