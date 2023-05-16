@@ -47,6 +47,7 @@ import java.util.Set;
  * create an instance of this fragment.
  */
 public class Home extends Fragment {
+    //главный экран
     private NoteViewModel mNotesViewModel;
 
     // TODO: Rename parameter arguments, choose names that match

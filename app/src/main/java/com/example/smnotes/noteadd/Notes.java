@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "notes_table", indices = {@Index(value = {"note"},
         unique = true)})
 public class Notes {
+    //структура таблицы
 
 
     @PrimaryKey(autoGenerate = true)

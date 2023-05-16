@@ -15,6 +15,7 @@ import com.example.smnotes.MainActivity;
 import java.util.List;
 
 public class NoteRepository {
+    //метод передающий данные в NoteDao
 
     private NoteDao mNoteDao;
     private LiveData<List<Notes>> mAllNotes;

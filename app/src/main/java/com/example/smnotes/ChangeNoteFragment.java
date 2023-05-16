@@ -27,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * create an instance of this fragment.
  */
 public class ChangeNoteFragment extends Fragment {
+    //изменение заметки
     private EditText name ;
     private EditText topic ;
     private EditText сnote;
@@ -94,6 +95,7 @@ public class ChangeNoteFragment extends Fragment {
         Button change = view.findViewById(R.id.ChangeNote);
         Button dell = view.findViewById(R.id.ChDell);
         TextView noyeschdell = view.findViewById(R.id.noyeschdell);
+        //вывод текущей заметки
         name.setText(Note[0]);
         topic.setText(Note[1]);
         сnote.setText(Note[2]);

@@ -24,6 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class NoteADD extends Fragment {
+    //Добавление заметки
     private NoteViewModel mNoteViewModel;
     private FloatingActionButton btn;
     private FloatingActionButton back;
@@ -53,6 +54,7 @@ public class NoteADD extends Fragment {
          topic = view.findViewById(R.id.New_Topic);
          nnote = view.findViewById(R.id.New_Note);
         mNoteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
+        //добавление заметки, подтверждение добавления
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,11 +107,14 @@ public class NoteADD extends Fragment {
 
     }
 
+    //переход  в главный фрагмент
     public void gsoto() {
         Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
 
     }
 
+
+    //метод, отвечающий за добавление заметки
     public void NotesADD(String name, String topic, String nnote){
         Notes note = new Notes(name, topic, nnote);
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
@@ -144,6 +149,8 @@ public class NoteADD extends Fragment {
 
     }
 
+
+    //метод, вызывающийся при закрытии фрагмента
     public void onDestroyView () {
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
             Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
