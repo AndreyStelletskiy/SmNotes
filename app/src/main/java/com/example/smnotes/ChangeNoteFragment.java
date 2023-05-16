@@ -133,6 +133,7 @@ public class ChangeNoteFragment extends Fragment {
                 }
             }
         });
+        //метод удаления с подтверждением(удалять или нет)
         dell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,6 +182,8 @@ public class ChangeNoteFragment extends Fragment {
         noch.setVisibility(View.INVISIBLE);
         noyesch.setVisibility(View.INVISIBLE);
 
+
+        //метод возрашение назад во фрагменте с подтверждением(применять изменения или нет)
         backch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -236,6 +239,8 @@ public class ChangeNoteFragment extends Fragment {
         return view;
     }
 
+
+    //метод вызывыющийся при закртытии фрагмента
     public void onDestroyView () {
 
         if (((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true) && name.getText().toString().length()!=0 && topic.getText().toString().length()!=0 && сnote.getText().toString().length()!=0){
