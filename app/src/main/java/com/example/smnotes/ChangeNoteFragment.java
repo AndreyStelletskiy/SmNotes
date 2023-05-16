@@ -103,17 +103,32 @@ public class ChangeNoteFragment extends Fragment {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), сnote.getText().toString());
-                mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
+                if (((name.getText().toString().equals(Note[0])) != true || (topic.getText().toString().equals(Note[1])) != true || (сnote.getText().toString().equals(Note[2])) != true) && name.getText().toString().length() != 0 && topic.getText().toString().length() != 0 && сnote.getText().toString().length() != 0) {
+                    Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), сnote.getText().toString());
+                    mNoteViewModel.deleteByname(Note[0], Note[1], Note[2]);
 
-                Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
-                try {
-                    prc =1;
-                    mNoteViewModel.insert(Nnote);
-                } catch (SQLException e){
-                    Log.d("RRR", "SQLException");
+                    Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
+                    try {
+                        prc = 1;
+                        mNoteViewModel.insert(Nnote);
+                    } catch (SQLException e) {
+                        Log.d("RRR", "SQLException");
+                    }
+
                 }
-
+                else{
+                    int ccc=0;
+                    if(name.getText().toString().length()==0 && topic.getText().toString().length()!=0 &&сnote.getText().toString().length()!=0){
+                        ccc=1;
+                        Toast.makeText(getActivity(), getResources().getString(R.string.addname), Toast.LENGTH_SHORT).show();}
+                    if(name.getText().toString().length()!=0 && topic.getText().toString().length()==0 &&сnote.getText().toString().length()!=0){
+                        ccc=2;
+                        Toast.makeText(getActivity(), getResources().getString(R.string.addtopic), Toast.LENGTH_SHORT).show();}
+                    if(name.getText().toString().length()!=0 && topic.getText().toString().length()!=0 &&сnote.getText().toString().length()==0){
+                        ccc=3;
+                        Toast.makeText(getActivity(), getResources().getString(R.string.addnote), Toast.LENGTH_SHORT).show();}
+                    if(ccc==0) {Toast.makeText(getActivity(), getResources().getString(R.string.addall), Toast.LENGTH_SHORT).show();}
+                }
             }
         });
         dell.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +185,7 @@ public class ChangeNoteFragment extends Fragment {
 
 
 
-                if ((name.getText().toString().equals(Note[0]))==true && (topic.getText().toString().equals(Note[1]))==true && (сnote.getText().toString().equals(Note[2]))==true){
+                if ((name.getText().toString().equals(Note[0]))==true && (topic.getText().toString().equals(Note[1]))==true && (сnote.getText().toString().equals(Note[2]))==true || (name.getText().toString().length()==0 || topic.getText().toString().length()==0 || сnote.getText().toString().length()==0)){
                     Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);}
                 else{
 
@@ -203,6 +218,7 @@ public class ChangeNoteFragment extends Fragment {
                     noch.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            prc =1;
                             Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
                         }
                     });
@@ -219,7 +235,8 @@ public class ChangeNoteFragment extends Fragment {
     }
 
     public void onDestroyView () {
-        if ((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true){
+
+        if (((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true) && name.getText().toString().length()!=0 && topic.getText().toString().length()!=0 && сnote.getText().toString().length()!=0){
             Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
             try {
                 if (prc==0){

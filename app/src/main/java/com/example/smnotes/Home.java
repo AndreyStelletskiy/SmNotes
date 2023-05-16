@@ -327,12 +327,7 @@ public class Home extends Fragment {
             });}
 
 
-
-
-
-
-
-
+        // нажатие на кнопку, чтобы создать заметку
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -349,7 +344,7 @@ public class Home extends Fragment {
             List<String> topicnames = new ArrayList<>(set);
             LinearLayout layout = (LinearLayout) view.findViewById(R.id.ltop);
 
-
+            //генерация кнопок
             Button[] btn = new Button[(topicnames.size() + 2)];
             int im = topicnames.size() + 1;
             System.out.println(im);
