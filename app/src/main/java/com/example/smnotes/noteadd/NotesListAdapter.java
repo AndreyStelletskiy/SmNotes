@@ -53,7 +53,7 @@ public class NotesListAdapter extends ListAdapter<Notes, NotesListAdapter.NotesV
             noteItemView.setText(note);
             nameItemView.setText(name);
             topicItemView.setText(topic);
-            Notes nnote = new Notes(name, topic, note);
+            Notes nnote = new Notes(name, topic, note, "cc");
         }
 
         static NotesViewHolder create(ViewGroup parent) {

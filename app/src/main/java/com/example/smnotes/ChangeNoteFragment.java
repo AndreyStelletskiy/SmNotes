@@ -20,6 +20,8 @@ import com.example.smnotes.noteadd.NoteViewModel;
 import com.example.smnotes.noteadd.Notes;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Locale;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +44,7 @@ public class ChangeNoteFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public ChangeNoteFragment() {
         // Required empty public constructor
@@ -75,7 +78,7 @@ public class ChangeNoteFragment extends Fragment {
         }
         String result = getArguments().getString("0");
         Note = result.split("/ /");
-        Snote = new Notes(Note[0],Note[1],Note[2]);
+        Snote = new Notes(Note[0],Note[1],Note[2], Note[0]+Note[1]+Note[2]);
 
 
 
@@ -105,9 +108,9 @@ public class ChangeNoteFragment extends Fragment {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((name.getText().toString().equals(Note[0])) != true || (topic.getText().toString().equals(Note[1])) != true || (сnote.getText().toString().equals(Note[2])) != true) && name.getText().toString().length() != 0 && topic.getText().toString().length() != 0 && сnote.getText().toString().length() != 0) {
-                    Notes Nnote = new Notes(name.getText().toString(), topic.getText().toString(), сnote.getText().toString());
-                    mNoteViewModel.deleteByname(Note[0], Note[1], Note[2]);
+                if (((name.getText().toString().equals(Note[0])) != true || (topic.getText().toString().equals(Note[1])) != true || (сnote.getText().toString().equals(Note[2])) != true) && name.getText().toString().trim().length() != 0 && topic.getText().toString().trim().length() != 0 && сnote.getText().toString().trim().length() != 0) {
+                    Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim(),name.getText().toString().toLowerCase(Locale.ROOT)+ topic.getText().toString().trim()+сnote.getText().toString());
+                    mNoteViewModel.deleteByname(Note[0]+Note[1]+Note[2]);
 
                     Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
                     try {
@@ -151,11 +154,12 @@ public class ChangeNoteFragment extends Fragment {
                 change.setVisibility(View.INVISIBLE);
                 dell.setVisibility(View.INVISIBLE);
                 noyeschdell.setText(getResources().getString(R.string.ct));
+                prc = 1;
 
                 yesch.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mNoteViewModel.deleteByname(Note[0],Note[1],Note[2]);
+                        mNoteViewModel.deleteByname(Note[0]+Note[1]+Note[2]);
 
                         Toast.makeText(getActivity(), getResources().getString(R.string.cndell), Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
@@ -207,8 +211,8 @@ public class ChangeNoteFragment extends Fragment {
                     yesch.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
-                            mNoteViewModel.deleteByname(Note[0],Note[1], Note[2]);
+                            Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim(), "cc");
+                            mNoteViewModel.deleteByname(Note[0]+Note[1]+Note[2]);
 
                             Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);
                             try {
@@ -244,7 +248,7 @@ public class ChangeNoteFragment extends Fragment {
     public void onDestroyView () {
 
         if (((name.getText().toString().equals(Note[0]))!=true || (topic.getText().toString().equals(Note[1]))!=true || (сnote.getText().toString().equals(Note[2]))!=true) && name.getText().toString().length()!=0 && topic.getText().toString().length()!=0 && сnote.getText().toString().length()!=0){
-            Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim());
+            Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim(), name.getText().toString().trim()+topic.getText().toString().trim()+сnote.getText().toString().trim());
             try {
                 if (prc==0){
                 mNoteViewModel.insert(note);}

@@ -12,14 +12,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Notes.class}, version = 1, exportSchema = false)
+@Database(entities = {Notes.class}, version = 5, exportSchema = false)
 public abstract class NoteRoomDatabase extends RoomDatabase {
 
     // Это создание таблицы!!!
     public abstract NoteDao noteDao();
 
     private static volatile NoteRoomDatabase INSTANCE;
-    private static final int NUMBER_OF_THREADS = 4;
+    private static final int NUMBER_OF_THREADS = 5;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
@@ -30,7 +30,7 @@ public abstract class NoteRoomDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     NoteRoomDatabase.class, "note_database")
                             .addCallback(sRoomDatabaseCallback)
-                           // .fallbackToDestructiveMigration()// <- drop!
+                            //.fallbackToDestructiveMigration()// <- drop!
                             .build();
                 }
             }
@@ -51,7 +51,7 @@ public abstract class NoteRoomDatabase extends RoomDatabase {
                 NoteDao dao = INSTANCE.noteDao();
                 dao.deleteAll();
 
-                Notes notes = new Notes("Добро пожаловать", "Приветствие", "Приятного использования. \nПо вопросам пишите на почту: a.stelletskiy@ya.ru\nЕсли вы удолили эту заметку, воспользуйтесь справкой(находиться в конце тем или названий всех заметок)\nderected Andrey Stelletskiy");
+                Notes notes = new Notes("Добро пожаловать", "Приветствие", "Приятного использования. \nПо вопросам пишите на почту: a.stelletskiy@ya.ru\nЕсли вы удолили эту заметку, воспользуйтесь справкой(находиться в конце тем или названий всех заметок)\nderected Andrey Stelletskiy", "cc");
                 try {
                     dao.insert(notes);
                 } catch (Exception e) {

@@ -29,8 +29,8 @@ public interface NoteDao {
     @Query("DELETE  FROM notes_table")
     void deleteAll();
 
-    @Query("DELETE from notes_table WHERE name IN (:name) AND topic IN(:topic) AND note IN(:note)")
-    int deleteByname(String name, String topic, String note);
+    @Query("DELETE from notes_table WHERE nodiff IN (:ndiff)")
+    int deleteByname(String ndiff);
 
 
     //метод получения заметок из бд по теме
@@ -54,7 +54,7 @@ public interface NoteDao {
 
 
     //метод получения всех заметок из бд
-    @Query("SELECT * FROM notes_table ORDER BY topic DESC")
+    @Query("SELECT * FROM notes_table ORDER BY id DESC")
     LiveData<List<Notes>> getAlphabetizedWords();
 
 }

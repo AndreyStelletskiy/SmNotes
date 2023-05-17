@@ -58,7 +58,7 @@ public class NoteADD extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               NotesADD(name.getText().toString(), topic.getText().toString(), nnote.getText().toString());
+               NotesADD(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim(),name.getText().toString().trim()+topic.getText().toString().trim()+nnote.getText().toString().trim());
 
 
             }
@@ -83,7 +83,7 @@ public class NoteADD extends Fragment {
                     yes.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            NotesADD( name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
+                            NotesADD( name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim(),  name.getText().toString().trim()+topic.getText().toString().trim()+nnote.getText().toString().trim());
                             //gsoto();
                             bb=1;
                         }
@@ -115,8 +115,8 @@ public class NoteADD extends Fragment {
 
 
     //метод, отвечающий за добавление заметки
-    public void NotesADD(String name, String topic, String nnote){
-        Notes note = new Notes(name, topic, nnote);
+    public void NotesADD(String name, String topic, String nnote, String ndiff){
+        Notes note = new Notes(name, topic, nnote, name+topic+nnote);
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
             bb=1;
 
@@ -153,7 +153,7 @@ public class NoteADD extends Fragment {
     //метод, вызывающийся при закрытии фрагмента
     public void onDestroyView () {
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
-            Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim());
+            Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim(), name.getText().toString().trim()+topic.getText().toString().trim()+nnote.getText().toString().trim());
             if (bb == 0) {
                 try {
 

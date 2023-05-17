@@ -58,7 +58,7 @@ public class NoteRepository {
                     @Override
                     public void run() {
                         // write your code here
-                        Toast.makeText(application.getApplicationContext(), "Заметка с таким текстом уже сушествует", Toast.LENGTH_LONG).show();
+                        Toast.makeText(application.getApplicationContext(), "Такая заметка уже существует", Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -83,9 +83,9 @@ public class NoteRepository {
             mNoteDao.deleteAll();
         });}
 
-    void deleteByname(String name, String topic, String note) {
+    void deleteByname(String ndiff) {
         NoteRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mNoteDao.deleteByname(name, topic, note);
+            mNoteDao.deleteByname(ndiff);
         });}
 
     LiveData<List<String>> getALLtopic() {
