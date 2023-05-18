@@ -3,8 +3,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#EDB259"
-    android:backgroundTint="#F4D474"
     android:orientation="vertical">
 
     <View
@@ -21,6 +19,8 @@
         <TextView
             android:id="@+id/textname"
             android:layout_width="80dp"
+            android:background="#EDB259"
+            android:backgroundTint="#F4D474"
             android:layout_height="wrap_content"
             android:text="@string/item_name"
             android:textColor="#FF000000" />
@@ -37,6 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#EDB259"
+            android:backgroundTint="#F4D474"
             android:textColor="#FF000000"
             android:text="TextView" />
 
@@ -58,6 +60,8 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="@string/item_topic"
+            android:background="#EDB259"
+            android:backgroundTint="#F4D474"
             android:textColor="#FF000000" />
 
         <View
@@ -72,6 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#EDB259"
+            android:backgroundTint="#F4D474"
             android:textColor="#FF000000"
             android:text="TextView" />
 
@@ -93,6 +99,8 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="@string/item_note"
+            android:background="#EDB259"
+            android:backgroundTint="#F4D474"
             android:textColor="#FF000000" />
 
         <View
@@ -107,6 +115,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#EDB259"
+            android:backgroundTint="#F4D474"
             android:textColor="#FF000000"
             android:text="TextView" />
 
@@ -115,13 +125,8 @@
         android:id="@+id/divider11"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginBottom="7dp"
         android:background="@color/black" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:background="@color/design_default_color_on_primary" />
 
 </LinearLayout>
 
