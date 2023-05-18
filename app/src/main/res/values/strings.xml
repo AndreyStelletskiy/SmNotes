@@ -40,6 +40,8 @@
     <string name="alln">Все заметки</string>
     <string name="all">Все</string>
     <string name="infot">Справка</string>
+    <string name="cs">Измените хотябы одно поле</string>
     <string name="ct">   Удалить заметку?\nВосстановление будет невозможно.</string>
+    <string name="ttt">Старая заметка не изменена\nНовая добавлена</string>
 
 </resources>

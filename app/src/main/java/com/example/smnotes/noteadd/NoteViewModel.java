@@ -25,7 +25,7 @@ public class NoteViewModel extends AndroidViewModel {
 
     public LiveData<List<Notes>> getAllNotes() { return mAllNotes; }
 
-    public void insert(Notes note) { mRepository.insert(note); }
+    public void insert(Notes note, int ttt) { mRepository.insert(note, ttt); }
     public void delete(Notes note) { mRepository.delet(note); }
     public void deleteAll(){mRepository.deletALL();}
     public void deleteByname(String ndiff){mRepository.deleteByname(ndiff);}

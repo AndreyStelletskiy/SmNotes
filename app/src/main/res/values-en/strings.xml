@@ -39,4 +39,7 @@
     <string name="infot">Reference</string>
     <string name="notesit">Notes with a theme:</string>
     <string name="ct">      Delete note?\nRestoration will be impossible.</string>
+
+    <string name="cs">Replace at least one field</string>
+    <string name="ttt">Old note not changed\nNew added</string>
 </resources>

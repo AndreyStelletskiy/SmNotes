@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.lifecycle.LiveData;
 
 import com.example.smnotes.MainActivity;
+import com.example.smnotes.R;
 
 import java.util.List;
 
@@ -41,15 +42,26 @@ public class NoteRepository {
 
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
-    void insert(Notes note) {
+    void insert(Notes note, int ttt) {
         NoteRoomDatabase.databaseWriteExecutor.execute(() -> {
             try {
                 mNoteDao.insert(note);
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        // write your code here
-                        Toast.makeText(application.getApplicationContext(), "Заметка сохранена", Toast.LENGTH_LONG).show();
+                        if(ttt == 1){
+                            Toast.makeText(application.getApplicationContext(),application.getApplicationContext().getResources().getString(R.string.noteadd), Toast.LENGTH_LONG).show();
+                        }
+                        if(ttt == 2){
+                            Toast.makeText(application.getApplicationContext(),application.getApplicationContext().getResources().getString(R.string.cnotes), Toast.LENGTH_LONG).show();
+                        }
+                        if(ttt == 3){
+                            Toast.makeText(application.getApplicationContext(),application.getApplicationContext().getResources().getString(R.string.ttt), Toast.LENGTH_LONG).show();
+                        }
+                        else {
+
+                        }
+                        //Toast.makeText(application.getApplicationContext(), "Заметка добавлена", Toast.LENGTH_LONG).show();
                     }
                 });
             } catch (Exception e) {

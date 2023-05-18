@@ -32,5 +32,8 @@
     <string name="all">Alle</string>
     <string name="infot">Referenz</string>
     <string name="notesit">Betreffnotizen:</string>
+
+    <string name="cs">Измените хотябы одно поле</string>
+    <string name="ttt">Старая заметка не изменина\nНовая добавлена</string>
 </resources>
 

@@ -32,6 +32,7 @@ public class NoteADD extends Fragment {
     private EditText topic ;
     private EditText nnote;
     private int bb = 0 ;
+    public int ttt = 0;
 
 
     @Override
@@ -119,18 +120,11 @@ public class NoteADD extends Fragment {
         Notes note = new Notes(name, topic, nnote, name+topic+nnote);
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
             bb=1;
-
-            try {
-
-                mNoteViewModel.insert(note);
-                String text = getResources().getString(R.string.noteadd);
-                //Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
-            } catch (Exception e){
-                Toast.makeText(getActivity(), "Такая заметка уже есть", Toast.LENGTH_SHORT).show();
-                Log.d("rrr" , "vmvbrivnvnrnvr");
+            if(ttt!=4) {
+                Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
             }
-
-            Navigation.findNavController(requireView()).navigate(R.id.action_noteADD_to_homes);
+            ttt = 1;
+            mNoteViewModel.insert(note, ttt);
         }
         else{
             int ccc=0;
@@ -152,20 +146,13 @@ public class NoteADD extends Fragment {
 
     //метод, вызывающийся при закрытии фрагмента
     public void onDestroyView () {
+        ttt=4;
         if(name.length()!=0 && topic.length()!=0 &&nnote.length()!=0) {
-            Notes note = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim(), name.getText().toString().trim()+topic.getText().toString().trim()+nnote.getText().toString().trim());
             if (bb == 0) {
-                try {
-
-                    mNoteViewModel.insert(note);
-                    String text = getResources().getString(R.string.noteadd);
-                    Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
-                } catch (SQLException e){
-                    Toast.makeText(getActivity(), "Такая заметка уже есть", Toast.LENGTH_SHORT).show();
-                }
+                ttt=4;
+               NotesADD(name.getText().toString().trim(), topic.getText().toString().trim(), nnote.getText().toString().trim(), name.getText().toString().trim()+topic.getText().toString().trim()+nnote.getText().toString().trim());
             }
         }
         super.onDestroyView();
     }
-
 }
