@@ -110,7 +110,7 @@ public class ChangeNoteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (((name.getText().toString().equals(Note[0])) != true || (topic.getText().toString().equals(Note[1])) != true || (сnote.getText().toString().equals(Note[2])) != true) && name.getText().toString().trim().length() != 0 && topic.getText().toString().trim().length() != 0 && сnote.getText().toString().trim().length() != 0) {
-                    Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim(),name.getText().toString().toLowerCase(Locale.ROOT)+ topic.getText().toString().trim()+сnote.getText().toString());
+                    Notes Nnote = new Notes(name.getText().toString().trim(), topic.getText().toString().trim(), сnote.getText().toString().trim(),name.getText().toString().trim()+ topic.getText().toString().trim()+сnote.getText().toString().trim());
                     mNoteViewModel.deleteByname(Note[0]+Note[1]+Note[2]);
 
                     Navigation.findNavController(requireView()).navigate(R.id.action_changeNoteFragment_to_homes);

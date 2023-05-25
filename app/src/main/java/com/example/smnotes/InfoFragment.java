@@ -11,22 +11,20 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
-import android.text.style.UnderlineSpan;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link infoFragment#newInstance} factory method to
+ * Use the {@link InfoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class infoFragment extends DialogFragment {
+public class InfoFragment extends DialogFragment {
     //фрагмент, отвечающий за вывод справки
 
     // TODO: Rename parameter arguments, choose names that match
@@ -38,7 +36,7 @@ public class infoFragment extends DialogFragment {
     private String mParam1;
     private String mParam2;
 
-    public infoFragment() {
+    public InfoFragment() {
         // Required empty public constructor
     }
 
@@ -48,11 +46,11 @@ public class infoFragment extends DialogFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment infoFragment.
+     * @return A new instance of fragment InfoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static infoFragment newInstance(String param1, String param2) {
-        infoFragment fragment = new infoFragment();
+    public static InfoFragment newInstance(String param1, String param2) {
+        InfoFragment fragment = new InfoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
